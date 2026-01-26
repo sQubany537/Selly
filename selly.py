@@ -3,7 +3,7 @@ import streamlit as st
 # 1. Konfiguracja strony
 st.set_page_config(page_title="Hey Selly", layout="wide")
 
-# 2. CSS - Style
+# 2. CSS - Style (Zaktualizowane dla równej długości przycisków)
 st.markdown("""
 <style>
     .stApp {
@@ -15,18 +15,22 @@ st.markdown("""
         border-right: 1px solid #333;
     }
 
+    /* Stylizacja przycisków - teraz wszystkie są równej długości */
     div.stButton > button {
         background-color: #FF1493 !important;
         color: white !important;
         border: none;
-        padding: 15px 30px;
-        font-size: 20px;
+        padding: 15px 10px;
+        font-size: 18px;
         font-weight: bold;
         border-radius: 50px;
         box-shadow: 0px 0px 15px #FF1493;
         transition: 0.3s;
-        width: 100%;
-        margin-bottom: 10px;
+        
+        /* Kluczowe dla równej długości: */
+        display: block;
+        width: 250px; 
+        margin: 10px auto;
     }
 
     div.stButton > button:hover {
@@ -90,6 +94,7 @@ st.markdown("""
 # 3. Pasek boczny
 with st.sidebar:
     st.markdown("<h2 style='color: white;'>MENU</h2>", unsafe_allow_html=True)
+    # Przyciski w sidebarze automatycznie przejmą styl CSS zdefiniowany powyżej
     btn_selly = st.button("Hey Selly")
     btn_love = st.button("I love you")
     btn_sorry = st.button("I want to say sorry :(")
@@ -116,9 +121,8 @@ elif btn_love:
     st.markdown("<p class='personal-note'>My mother used to read me polish version of this book</p>", unsafe_allow_html=True)
 
 elif btn_sorry:
-    st.snow() # Delikatny efekt opadu dla nastroju
+    st.snow()
     st.markdown("<h1>I am so sorry...</h1>", unsafe_allow_html=True)
-    # Twój tekst w specjalnej ramce
     st.markdown(f"""
         <div class='sorry-box'>
             Selly, I really wanted to apologize to you because what I did was terrible... 
