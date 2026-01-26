@@ -62,6 +62,6 @@ if st.button("Hey Selly"):
 
 # Obrazek niebieskich tulipanów (bez napisu pod spodem)
 st.image(
-    "https://images.unsplash.com/photo-1550159930-40066082a4fc?q=80&w=1000&auto=format&fit=crop", 
+    "https://www.google.com/search?client=opera-gx&hs=dlV&sca_esv=fc1c730d332ca106&sxsrf=ANbL-n7n6rPPV1vSBLiJh0uQ2nAx7pdRpA:1769450165794&udm=2&fbs=ADc_l-aTuuAJ5fCRiMSMSikFOrGF6bdyujK3KN_bbLSQcwMiswggXfTRhCRsHJn9B_hTNtA0qAF6fsia5Whbfe37pa5kZmLcgAF0SMKMHYaMmCRYOhQTvpHzpBjtIhJM-gXgbLn8WwKpZbUbaOXYvCNCzSeLh0F4TMmhviZumQHtZIZhSk8fv5NI72NapzVvoOyWbPW3JHCS70yM5mjAnOGUoZDn4blIAYKBUg_qa4-cySVWyHbXKd4&q=blue+tulip&sa=X&ved=2ahUKEwj2vdHE46mSAxWXJhAIHV8YFtwQtKgLegQIExAB&biw=1494&bih=740&dpr=1.25&aic=0#sv=CAMSVhoyKhBlLWczR2U1TlZ0OXFvX1VNMg5nM0dlNU5WdDlxb19VTToOQUdCQXRKUzhsb0ZENk0gBCocCgZtb3NhaWMSEGUtZzNHZTVOVnQ5cW9fVU0YADABGAcgqYiXqwEwAkoKCAEQAhgCIAIoAg", 
     width=500
 )
