@@ -1,65 +1,55 @@
 import streamlit as st
 
 # 1. Konfiguracja strony
-st.set_page_config(page_title="Hey Selly", layout="centered")
+st.set_page_config(page_title="Hey Selly", layout="wide")
 
-# 2. CSS dla czarnego tła, różowego przycisku i braku napisów
+# 2. CSS - Style (Czarny motyw + Różowe przyciski + Ukrycie zbędnych elementów)
 st.markdown("""
     <style>
-    /* Czarne tło całej strony */
+    /* Czarne tło całej aplikacji */
     .stApp {
         background-color: #000000;
     }
-
-    /* Centrowanie elementów */
-    .stButton, .element-container {
-        display: flex;
-        justify-content: center;
+    
+    /* Czarne tło paska bocznego (sidebar) */
+    [data-testid="stSidebar"] {
+        background-color: #000000;
+        border-right: 1px solid #333;
     }
 
-    /* Stylizacja przycisku - intensywny róż */
+    /* Stylizacja przycisków - intensywny róż */
     div.stButton > button {
         background-color: #FF1493 !important; /* Deep Pink */
         color: white !important;
         border: none;
-        padding: 18px 50px;
-        font-size: 28px;
+        padding: 15px 30px;
+        font-size: 20px;
         font-weight: bold;
         border-radius: 50px;
-        box-shadow: 0px 0px 20px #FF1493;
+        box-shadow: 0px 0px 15px #FF1493;
         transition: 0.3s;
+        width: 100%; /* Przyciski na całą szerokość paska */
+        margin-bottom: 10px;
     }
 
     div.stButton > button:hover {
-        transform: scale(1.1);
-        box-shadow: 0px 0px 35px #FF1493;
+        transform: scale(1.05);
+        box-shadow: 0px 0px 25px #FF1493;
     }
 
     /* Ukrycie napisów i obramowań pod obrazkiem */
     p, [data-testid="stImageCaption"] {
-        display: none !important;
+        color: white; /* Tekst domyślnie biały */
     }
      
+    /* Styl dla nagłówków */
+    h1, h2, h3 {
+        color: #FF1493 !important;
+        text-align: center;
+    }
+    
     img {
         border-radius: 15px;
-        box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
-    }
-    </style>
-    """, unsafe_allow_html=True)
-
-# 3. Treść strony
-st.write("<br><br>", unsafe_allow_html=True)
-
-# Przycisk
-if st.button("Hey Selly"):
-    # Efekt serduszek
-    st.toast("💖💖💖💖💖")
-    st.snow() # Standardowy efekt opadu (najbliższy sercom w Streamlit)
-    st.markdown("<h1 style='text-align: center; color: #FF1493;'>❤️ SELLY ❤️</h1>", unsafe_allow_html=True)
-
-# Zdjęcie niebieskich tulipanów
-# ZMIANA: Użyłem nowego linku do zdjęcia, które przedstawia wyraźnie niebieskie tulipany
-st.image(
-    "https://images.unsplash.com/photo-1520763185298-1b434c919102?q=80&w=1000&auto=format&fit=crop", 
-    width=600
-)
+        box-shadow: 0px 0px 15px rgba(255, 20, 147, 0.3);
+        display: block;
+        margin-left
