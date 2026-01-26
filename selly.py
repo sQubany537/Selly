@@ -60,4 +60,4 @@ with col1:
     if st.button("Hey Selly"):
         # Akcja po kliknięciu
         st.balloons()
-        st.markdown("<h1 style='text-align: center; color: #555;'>Cześć Selly! ✨</h1>", unsafe_allow_html=True)
+        st.markdown("<h1 style='text-align: center; color: #555;'>Hey My world! ✨</h1>", unsafe_allow_html=True)
