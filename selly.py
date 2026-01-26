@@ -3,7 +3,7 @@ import streamlit as st
 # 1. Konfiguracja strony
 st.set_page_config(page_title="Hey Selly", layout="wide")
 
-# 2. CSS - Style (Zaktualizowane dla równej długości przycisków)
+# 2. CSS - Style
 st.markdown("""
 <style>
     .stApp {
@@ -15,7 +15,7 @@ st.markdown("""
         border-right: 1px solid #333;
     }
 
-    /* Stylizacja przycisków - teraz wszystkie są równej długości */
+    /* Stylizacja przycisków - równej długości */
     div.stButton > button {
         background-color: #FF1493 !important;
         color: white !important;
@@ -26,8 +26,6 @@ st.markdown("""
         border-radius: 50px;
         box-shadow: 0px 0px 15px #FF1493;
         transition: 0.3s;
-        
-        /* Kluczowe dla równej długości: */
         display: block;
         width: 250px; 
         margin: 10px auto;
@@ -94,7 +92,6 @@ st.markdown("""
 # 3. Pasek boczny
 with st.sidebar:
     st.markdown("<h2 style='color: white;'>MENU</h2>", unsafe_allow_html=True)
-    # Przyciski w sidebarze automatycznie przejmą styl CSS zdefiniowany powyżej
     btn_selly = st.button("Hey Selly")
     btn_love = st.button("I love you")
     btn_sorry = st.button("I want to say sorry :(")
@@ -139,5 +136,6 @@ elif btn_4:
     st.markdown("<h1>✨ Jesteś wyjątkowa! ✨</h1>", unsafe_allow_html=True)
 
 else:
+    # Zmieniony napis startowy na prośbę użytkownika
     st.write("<br><br>", unsafe_allow_html=True)
-    st.markdown("<h3 style='color: white; text-align: center;'>Wybierz coś z menu po lewej stronie... 👈</h3>", unsafe_allow_html=True)
+    st.markdown("<h3 style='color: white; text-align: center;'>Choose something from the menu on the left... 👈</h3>", unsafe_allow_html=True)
