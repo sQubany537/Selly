@@ -3,7 +3,7 @@ import streamlit as st
 # 1. Konfiguracja strony
 st.set_page_config(page_title="Hey Selly", layout="wide")
 
-# 2. CSS - Style (Poprawione domykanie bloków)
+# 2. CSS - Style
 st.markdown("""
 <style>
     .stApp {
@@ -39,6 +39,14 @@ st.markdown("""
         text-align: center;
     }
     
+    .tulip-text {
+        color: white;
+        text-align: center;
+        font-size: 24px;
+        font-style: italic;
+        margin-top: 20px;
+    }
+
     img {
         border-radius: 15px;
         box-shadow: 0px 0px 15px rgba(255, 20, 147, 0.3);
@@ -61,6 +69,8 @@ with st.sidebar:
 if btn_selly:
     st.markdown("<h1>Hey my world 🌍💙</h1>", unsafe_allow_html=True)
     st.image("https://images.unsplash.com/photo-1520763185298-1b434c919102?q=80&w=1000&auto=format&fit=crop", width=600)
+    # Dodany napis pod zdjęciem:
+    st.markdown("<p class='tulip-text'>I know how much you love tulips and I want you to be mine tulip</p>", unsafe_allow_html=True)
 
 elif btn_love:
     st.balloons()
