@@ -44,32 +44,41 @@ st.markdown("""
         text-align: center;
         font-size: 24px;
         font-style: italic;
-        margin-top: 20px;
+        margin-top: 25px;
+        display: block;
+    }
+
+    /* Centrowanie obrazka */
+    .stImage {
+        display: flex;
+        justify-content: center;
     }
 
     img {
         border-radius: 15px;
         box-shadow: 0px 0px 15px rgba(255, 20, 147, 0.3);
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
     }
 </style>
 """, unsafe_allow_html=True)
 
-# 3. Pasek boczny
+# 3. Pasek boczny z przyciskami
 with st.sidebar:
     st.markdown("<h2 style='color: white;'>MENU</h2>", unsafe_allow_html=True)
     btn_selly = st.button("Hey Selly")
     btn_love = st.button("I love you")
-    btn_3 = st.button("Niespodzianka 1")
-    btn_4 = st.button("Niespodzianka 2")
+    # Zmiana nazwy przycisku 3
+    btn_sorry = st.button("I want to say sorry :(")
+    btn_4 = st.button("Niespodzianka")
 
-# 4. Logika wyświetlania
+# 4. Logika wyświetlania zawartości
 if btn_selly:
+    # Napis na górze
     st.markdown("<h1>Hey my world 🌍💙</h1>", unsafe_allow_html=True)
+    
+    # Obrazek pod napisem (wyśrodkowany przez CSS)
     st.image("https://images.unsplash.com/photo-1520763185298-1b434c919102?q=80&w=1000&auto=format&fit=crop", width=600)
-    # Dodany napis pod zdjęciem:
+    
+    # Napis pod obrazkiem
     st.markdown("<p class='tulip-text'>I know how much you love tulips and I want you to be mine tulip</p>", unsafe_allow_html=True)
 
 elif btn_love:
@@ -78,12 +87,15 @@ elif btn_love:
     st.markdown("<h1 style='font-size: 80px;'>❤️❤️❤️❤️❤️</h1>", unsafe_allow_html=True)
     st.toast("Kocham Cię! ❤️")
 
-elif btn_3:
-    st.markdown("<h1>🌸 Piękny dzień, Selly! 🌸</h1>", unsafe_allow_html=True)
+elif btn_sorry:
+    # Zawartość dla przycisku "I want to say sorry :("
+    st.markdown("<h1>I want to say sorry :(</h1>", unsafe_allow_html=True)
+    st.markdown("<h3 style='color: white !important;'>Tutaj możesz dopisać swoje przeprosiny...</h3>", unsafe_allow_html=True)
 
 elif btn_4:
     st.markdown("<h1>✨ Jesteś wyjątkowa! ✨</h1>", unsafe_allow_html=True)
 
 else:
+    # Ekran startowy
     st.write("<br><br>", unsafe_allow_html=True)
     st.markdown("<h3 style='color: white;'>Wybierz coś z menu po lewej stronie... 👈</h3>", unsafe_allow_html=True)
