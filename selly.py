@@ -39,19 +39,24 @@ st.markdown("""
         text-align: center;
     }
     
-    .tulip-text {
+    .quote-text {
         color: white;
         text-align: center;
+        font-size: 22px;
+        font-style: italic;
+        line-height: 1.6;
+        margin: 30px auto;
+        max-width: 800px;
+        text-shadow: 0px 0px 10px rgba(255, 20, 147, 0.5);
+    }
+
+    .tulip-text {
+        color: white;
+        text-align: right;
         font-size: 24px;
         font-style: italic;
         margin-top: 25px;
-        display: block;
-    }
-
-    /* Centrowanie obrazka */
-    .stImage {
-        display: flex;
-        justify-content: center;
+        padding-right: 50px;
     }
 
     img {
@@ -61,41 +66,44 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# 3. Pasek boczny z przyciskami
+# 3. Pasek boczny
 with st.sidebar:
     st.markdown("<h2 style='color: white;'>MENU</h2>", unsafe_allow_html=True)
     btn_selly = st.button("Hey Selly")
     btn_love = st.button("I love you")
-    # Zmiana nazwy przycisku 3
     btn_sorry = st.button("I want to say sorry :(")
     btn_4 = st.button("Niespodzianka")
 
-# 4. Logika wyświetlania zawartości
+# 4. Logika wyświetlania
 if btn_selly:
-    # Napis na górze
     st.markdown("<h1>Hey my world 🌍💙</h1>", unsafe_allow_html=True)
-    
-    # Obrazek pod napisem (wyśrodkowany przez CSS)
-    st.image("https://images.unsplash.com/photo-1520763185298-1b434c919102?q=80&w=1000&auto=format&fit=crop", width=600)
-    
-    # Napis pod obrazkiem
-    st.markdown("<p class='tulip-text'>I know how much you love tulips and I want you to be mine tulip</p>", unsafe_allow_html=True)
+    col1, col2, col3 = st.columns([1, 0.5, 2])
+    with col3:
+        st.image("https://images.unsplash.com/photo-1520763185298-1b434c919102?q=80&w=1000&auto=format&fit=crop", width=500)
+        st.markdown("<p class='tulip-text'>I know how much you love tulips and I want you to be mine tulip</p>", unsafe_allow_html=True)
 
 elif btn_love:
     st.balloons()
     st.markdown("<h1>I love you so much!</h1>", unsafe_allow_html=True)
+    
+    # Dodany cytat z Little Nutbrown Hare
+    st.markdown("""
+        <div class='quote-text'>
+            ″ ‘I love you all the way down the lane as far as the river,’ cried Little Nutbrown Hare. <br>
+            ‘I love you across the river and over the hills,’ said Big Nutbrown Hare. ”
+        </div>
+    """, unsafe_allow_html=True)
+    
     st.markdown("<h1 style='font-size: 80px;'>❤️❤️❤️❤️❤️</h1>", unsafe_allow_html=True)
     st.toast("Kocham Cię! ❤️")
 
 elif btn_sorry:
-    # Zawartość dla przycisku "I want to say sorry :("
     st.markdown("<h1>I want to say sorry :(</h1>", unsafe_allow_html=True)
-    st.markdown("<h3 style='color: white !important;'>Tutaj możesz dopisać swoje przeprosiny...</h3>", unsafe_allow_html=True)
+    st.markdown("<h3 style='color: white;'>Wybacz mi, proszę... 🥺</h3>", unsafe_allow_html=True)
 
 elif btn_4:
     st.markdown("<h1>✨ Jesteś wyjątkowa! ✨</h1>", unsafe_allow_html=True)
 
 else:
-    # Ekran startowy
     st.write("<br><br>", unsafe_allow_html=True)
-    st.markdown("<h3 style='color: white;'>Wybierz coś z menu po lewej stronie... 👈</h3>", unsafe_allow_html=True)
+    st.markdown("<h3 style='color: white; text-align: center;'>Wybierz coś z menu po lewej stronie... 👈</h3>", unsafe_allow_html=True)
