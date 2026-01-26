@@ -39,7 +39,7 @@ st.markdown("""
     p, [data-testid="stImageCaption"] {
         display: none !important;
     }
-    
+     
     img {
         border-radius: 15px;
         box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
@@ -57,8 +57,9 @@ if st.button("Hey Selly"):
     st.snow() # Standardowy efekt opadu (najbliższy sercom w Streamlit)
     st.markdown("<h1 style='text-align: center; color: #FF1493;'>❤️ SELLY ❤️</h1>", unsafe_allow_html=True)
 
-# Zdjęcie niebieskich tulipanów (używamy stabilnego linku do ciemnych tulipanów)
+# Zdjęcie niebieskich tulipanów
+# ZMIANA: Użyłem nowego linku do zdjęcia, które przedstawia wyraźnie niebieskie tulipany
 st.image(
-    "https://images.unsplash.com/photo-1550159930-40066082a4fc?q=80&w=800&auto=format&fit=crop", 
+    "https://images.unsplash.com/photo-1520763185298-1b434c919102?q=80&w=1000&auto=format&fit=crop", 
     width=600
 )
