@@ -3,7 +3,8 @@ import streamlit as st
 # 1. Konfiguracja strony
 st.set_page_config(page_title="Hey Selly", layout="wide")
 
-# 2. CSS - Style (Czarny motyw + Różowe przyciski + Ukrycie zbędnych elementów)
+# 2. CSS - Style
+# Tutaj był błąd - upewnij się, że ten blok kończy się potrójnym cudzysłowem
 st.markdown("""
     <style>
     /* Czarne tło całej aplikacji */
@@ -28,7 +29,7 @@ st.markdown("""
         border-radius: 50px;
         box-shadow: 0px 0px 15px #FF1493;
         transition: 0.3s;
-        width: 100%; /* Przyciski na całą szerokość paska */
+        width: 100%;
         margin-bottom: 10px;
     }
 
@@ -39,17 +40,7 @@ st.markdown("""
 
     /* Ukrycie napisów i obramowań pod obrazkiem */
     p, [data-testid="stImageCaption"] {
-        color: white; /* Tekst domyślnie biały */
+        color: white; 
     }
      
     /* Styl dla nagłówków */
-    h1, h2, h3 {
-        color: #FF1493 !important;
-        text-align: center;
-    }
-    
-    img {
-        border-radius: 15px;
-        box-shadow: 0px 0px 15px rgba(255, 20, 147, 0.3);
-        display: block;
-        margin-left
