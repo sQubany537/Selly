@@ -1,83 +1,65 @@
-import React, { useState, useEffect } from 'react';
-import FallingHearts from './components/FallingHearts';
+import streamlit as st
 
-const App: React.FC = () => {
-  const [showCelebration, setShowCelebration] = useState(false);
-  const [showToast, setShowToast] = useState(false);
+# 1. Konfiguracja strony
+st.set_page_config(page_title="Hey Selly", layout="centered")
 
-  // Blue tulips image URL (Pexels)
-  const blueTulipsUrl = "https://images.pexels.com/photos/18520336/pexels-photo-18520336.jpeg?auto=compress&cs=tinysrgb&w=800";
-
-  const handleButtonClick = () => {
-    setShowCelebration(true);
-    setShowToast(true);
-  };
-
-  useEffect(() => {
-    if (showToast) {
-      const timer = setTimeout(() => {
-        setShowToast(false);
-      }, 3000); // Hide toast after 3 seconds
-      return () => clearTimeout(timer);
+# 2. CSS dla czarnego tła, różowego przycisku i braku napisów
+st.markdown("""
+    <style>
+    /* Czarne tło całej strony */
+    .stApp {
+        background-color: #000000;
     }
-  }, [showToast]);
 
-  return (
-    <div className="min-h-screen bg-black flex flex-col items-center justify-center p-4 gap-8 relative overflow-hidden font-sans">
-      
-      {/* Spacer equivalent to <br><br> */}
-      <div className="h-8"></div>
+    /* Centrowanie elementów */
+    .stButton, .element-container {
+        display: flex;
+        justify-content: center;
+    }
 
-      {/* Button */}
-      <div className="z-10">
-        <button
-          onClick={handleButtonClick}
-          className={`
-            bg-[#FF1493] text-white 
-            border-none 
-            py-5 px-12
-            text-[28px] font-bold 
-            rounded-full
-            shadow-[0px_0px_20px_#FF1493] 
-            transition-all duration-300 
-            hover:scale-110 hover:shadow-[0px_0px_35px_#FF1493]
-            active:scale-95
-            cursor-pointer
-          `}
-        >
-          Hey Selly
-        </button>
-      </div>
+    /* Stylizacja przycisku - intensywny róż */
+    div.stButton > button {
+        background-color: #FF1493 !important; /* Deep Pink */
+        color: white !important;
+        border: none;
+        padding: 18px 50px;
+        font-size: 28px;
+        font-weight: bold;
+        border-radius: 50px;
+        box-shadow: 0px 0px 20px #FF1493;
+        transition: 0.3s;
+    }
 
-      {/* Celebration Text */}
-      {showCelebration && (
-        <div className="animate-pulse">
-           <h1 className="text-[#FF1493] text-4xl md:text-5xl font-bold text-center mt-4">
-             ❤️ SELLY ❤️
-           </h1>
-        </div>
-      )}
+    div.stButton > button:hover {
+        transform: scale(1.1);
+        box-shadow: 0px 0px 35px #FF1493;
+    }
 
-      {/* Image */}
-      <div className="mt-4">
-        <img 
-          src={blueTulipsUrl} 
-          alt="Blue Tulips" 
-          className="rounded-[15px] shadow-[0px_0px_10px_rgba(255,255,255,0.1)] max-w-full w-[600px] object-cover"
-        />
-      </div>
+    /* Ukrycie napisów i obramowań pod obrazkiem */
+    p, [data-testid="stImageCaption"] {
+        display: none !important;
+    }
+     
+    img {
+        border-radius: 15px;
+        box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
+    }
+    </style>
+    """, unsafe_allow_html=True)
 
-      {/* Toast Notification */}
-      {showToast && (
-        <div className="fixed top-10 bg-white/10 backdrop-blur-md border border-pink-500/30 text-white px-6 py-3 rounded-xl shadow-lg animate-bounce z-50">
-           💖💖💖💖💖
-        </div>
-      )}
+# 3. Treść strony
+st.write("<br><br>", unsafe_allow_html=True)
 
-      {/* Falling Hearts Effect */}
-      {showCelebration && <FallingHearts />}
-    </div>
-  );
-};
+# Przycisk
+if st.button("Hey Selly"):
+    # Efekt serduszek
+    st.toast("💖💖💖💖💖")
+    st.snow() # Standardowy efekt opadu (najbliższy sercom w Streamlit)
+    st.markdown("<h1 style='text-align: center; color: #FF1493;'>❤️ SELLY ❤️</h1>", unsafe_allow_html=True)
 
-export default App;
+# Zdjęcie niebieskich tulipanów
+# ZMIANA: Użyłem nowego linku do zdjęcia, które przedstawia wyraźnie niebieskie tulipany
+st.image(
+    "https://images.unsplash.com/photo-1520763185298-1b434c919102?q=80&w=1000&auto=format&fit=crop", 
+    width=600
+)
