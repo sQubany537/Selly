@@ -52,11 +52,10 @@ st.markdown("""
 
     .tulip-text {
         color: white;
-        text-align: right;
+        text-align: center; /* Zmienione na center dla lepszego balansu */
         font-size: 24px;
         font-style: italic;
         margin-top: 25px;
-        padding-right: 50px;
     }
 
     img {
@@ -77,16 +76,18 @@ with st.sidebar:
 # 4. Logika wyświetlania
 if btn_selly:
     st.markdown("<h1>Hey my world 🌍💙</h1>", unsafe_allow_html=True)
-    col1, col2, col3 = st.columns([1, 0.5, 2])
-    with col3:
-        st.image("https://images.unsplash.com/photo-1520763185298-1b434c919102?q=80&w=1000&auto=format&fit=crop", width=500)
+    
+    # Zmieniony układ kolumn, aby przesunąć obrazek nieco bardziej do środka (w lewo względem poprzedniego)
+    col1, col2, col3 = st.columns([0.8, 2, 0.8])
+    
+    with col2:
+        st.image("https://images.unsplash.com/photo-1520763185298-1b434c919102?q=80&w=1000&auto=format&fit=crop", use_container_width=True)
         st.markdown("<p class='tulip-text'>I know how much you love tulips and I want you to be mine tulip</p>", unsafe_allow_html=True)
 
 elif btn_love:
     st.balloons()
     st.markdown("<h1>I love you so much!</h1>", unsafe_allow_html=True)
     
-    # Dodany cytat z Little Nutbrown Hare
     st.markdown("""
         <div class='quote-text'>
             ″ ‘I love you all the way down the lane as far as the river,’ cried Little Nutbrown Hare. <br>
