@@ -56,7 +56,7 @@ if btn_selly:
     st.markdown("<h1>Hey my world 🌍💙</h1>", unsafe_allow_html=True)
     col1, col2, col3 = st.columns([0.8, 2, 0.8])
     with col2:
-        st.image("https://loremflickr.com/800/600/tulip,blue", use_container_width=True)
+        st.image("https://cdn.pixabay.com/photo/2017/02/15/10/57/tulips-2068331_1280.jpg", use_container_width=True)
         st.markdown("<p class='tulip-text'>I know how much you love tulips and I want you to be mine tulip</p>", unsafe_allow_html=True)
 
 elif btn_love:
@@ -68,22 +68,23 @@ elif btn_love:
 elif btn_sorry:
     st.snow()
     st.markdown("<h1>I am so sorry...</h1>", unsafe_allow_html=True)
-    st.markdown(f"<div class='sorry-box'>Selly, I really wanted to apologize to you... I love you, my honey... I miss you so much...</div>", unsafe_allow_html=True)
+    st.markdown(f"<div class='sorry-box'>Selly, I really wanted to apologize to you because what I did was terrible... I know it's annoying that I keep apologizing, but I promised myself I wouldn't give up because you're the person I'd do anything for, and that won't change no matter what. Forgive me for my mistake and please give me one last chance, which I don't intend to waste, ever. I love you, my honey... I miss you so much...</div>", unsafe_allow_html=True)
 
 elif btn_surprise:
     st.markdown("<h1>Meow! 🐾</h1>", unsafe_allow_html=True)
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
-        st.image("https://placekitten.com/600/400", use_container_width=True)
+        st.image("https://cdn.pixabay.com/photo/2014/11/30/14/11/cat-551554_1280.jpg", use_container_width=True)
 
 elif btn_gift:
     st.markdown("<h1>Your Random Gift! 🎁</h1>", unsafe_allow_html=True)
     
+    # Stałe linki do konkretnych zdjęć, które działają
     gifts = [
-        {"text": "Free Kisses 💋", "img": "https://loremflickr.com/600/400/kiss,heart"},
-        {"text": "Free Hugs 🤗", "img": "https://loremflickr.com/600/400/hug,teddybear"},
-        {"text": "Free Cats 🐱", "img": "https://placekitten.com/601/401"},
-        {"text": "Free Chocolate Ice Cream 🍦", "img": "https://loremflickr.com/600/400/chocolate,icecream"}
+        {"text": "Free Kisses 💋", "img": "https://cdn.pixabay.com/photo/2016/11/22/19/05/adult-1850073_1280.jpg"}, # Para
+        {"text": "Free Hugs 🤗", "img": "https://cdn.pixabay.com/photo/2016/11/14/03/05/teddy-bear-1822485_1280.jpg"}, # Miś
+        {"text": "Free Cats 🐱", "img": "https://cdn.pixabay.com/photo/2017/02/20/18/03/cat-2083492_1280.jpg"}, # Kotek
+        {"text": "Free Chocolate Ice Cream 🍦", "img": "https://cdn.pixabay.com/photo/2016/12/26/16/09/bowl-1932375_1280.jpg"} # Lody
     ]
     
     selected_gift = random.choice(gifts)
@@ -93,7 +94,7 @@ elif btn_gift:
     with col2:
         st.image(selected_gift['img'], use_container_width=True)
     
-    st.balloons() # To zastępuje confetti i działa bez błędów
+    st.balloons()
 
 else:
     st.write("<br><br>", unsafe_allow_html=True)
