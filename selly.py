@@ -94,8 +94,8 @@ elif btn_gift:
     
     gifts = [
         {"text": "Free Kisses 💋", "img": "https://cdn.pixabay.com/photo/2016/11/22/19/05/adult-1850073_1280.jpg"},
-        # Free Hugs - Zmieniony na Wikimedia (maksymalna stabilność)
-        {"text": "Free Hugs 🤗", "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Cute_teddy_bear_stuffed_animal.jpg/800px-Cute_teddy_bear_stuffed_animal.jpg"}, 
+        # Free Hugs - Użycie PlaceBear (serwer dedykowany obrazkom misiów, bardzo stabilny)
+        {"text": "Free Hugs 🤗", "img": "https://placebear.com/800/600"}, 
         {"text": "Free Cats 🐱", "img": "https://cdn.pixabay.com/photo/2017/02/20/18/03/cat-2083492_1280.jpg"},
         {"text": "Free Chocolate Ice Cream 🍦", "img": "https://cdn.pixabay.com/photo/2016/12/26/16/09/bowl-1932375_1280.jpg"}
     ]
