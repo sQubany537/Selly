@@ -8,7 +8,8 @@ st.set_page_config(page_title="Hey Selly", layout="wide")
 if 'available_gifts' not in st.session_state or len(st.session_state.available_gifts) == 0:
     st.session_state.available_gifts = [
         {"text": "Free Kisses 💋", "img": "https://cdn.pixabay.com/photo/2016/11/22/19/05/adult-1850073_1280.jpg"},
-        {"text": "Free Hugs 🤗", "img": "https://images.unsplash.com/photo-1555435034-9f88dd91444b?auto=format&fit=crop&q=80&w=800"}, 
+        # Free Hugs - Nowy, ultra-stabilny link (ikonograficzny miś/uścisk)
+        {"text": "Free Hugs 🤗", "img": "https://img.icons8.com/emoji/400/teddy-bear-emoji.png"}, 
         {"text": "Free Cats 🐱", "img": "https://cdn.pixabay.com/photo/2017/02/20/18/03/cat-2083492_1280.jpg"},
         {"text": "Free Chocolate Ice Cream 🍦", "img": "https://cdn.pixabay.com/photo/2016/12/26/16/09/bowl-1932375_1280.jpg"}
     ]
@@ -94,9 +95,8 @@ elif btn_surprise:
 elif btn_gift:
     st.markdown("<h1>Your Random Gift! 🎁</h1>", unsafe_allow_html=True)
     
-    # Wybieramy losowy prezent z tych, które zostały
+    # Wybieramy losowy prezent
     selected_gift = random.choice(st.session_state.available_gifts)
-    # Usuwamy go z listy, żeby się nie powtórzył
     st.session_state.available_gifts.remove(selected_gift)
     
     st.markdown(f"<h3>{selected_gift['text']}</h3>", unsafe_allow_html=True)
@@ -110,11 +110,4 @@ elif btn_gift:
 
 elif btn_be:
     st.balloons()
-    st.markdown("<div class='proposal-text'>Girlfriend?</div>", unsafe_allow_html=True)
-    col1, col2, col3 = st.columns([1, 2, 1])
-    with col2:
-        st.image("https://cdn.pixabay.com/photo/2017/08/06/20/11/couple-2595861_1280.jpg", use_container_width=True)
-
-else:
-    st.write("<br><br>", unsafe_allow_html=True)
-    st.markdown("<h3 style='color: white; text-align: center;'>Choose something from the menu on the left... 👈</h3>", unsafe_allow_html=True)
+    st.markdown("<div class='proposal-text'>Girlfriend?</div>", unsafe_allow
