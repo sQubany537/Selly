@@ -105,8 +105,8 @@ elif btn_be:
     st.markdown("<div class='proposal-text'>Girlfriend?</div>", unsafe_allow_html=True)
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
-        # Ten link pochodzi bezpośrednio z serwerów Google, musi zadziałać
-        st.image("https://www.gstatic.com/android/keyboard/emojikitchen/20200831/u1f496/u1f496_u1f4ab.png", width=400)
+        # Ten link pochodzi z Open Source'owej biblioteki Google Fonts - NIE MOŻE zostać zablokowany
+        st.image("https://fonts.gstatic.com/s/i/short-term/release/googlesymbols/favorite/default/48px.svg", width=400)
 
 else:
     st.write("<br><br>", unsafe_allow_html=True)
