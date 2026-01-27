@@ -10,7 +10,6 @@ st.markdown("""
     .stApp { background-color: #000000; }
     [data-testid="stSidebar"] { background-color: #000000 !important; border-right: 1px solid #333; }
 
-    /* Przyciski równej długości */
     div.stButton > button {
         background-color: #FF1493 !important;
         color: white !important;
@@ -65,12 +64,11 @@ elif btn_love:
     st.markdown("<h1>I love you so much!</h1>", unsafe_allow_html=True)
     st.markdown("<div class='quote-text'>″ ‘I love you all the way down the lane as far as the river... ”</div>", unsafe_allow_html=True)
     st.markdown("<h1 style='font-size: 80px;'>❤️❤️❤️❤️❤️</h1>", unsafe_allow_html=True)
-    st.markdown("<p style='color: #AAAAAA; text-align: center; font-style: italic;'>My mother used to read me polish version of this book</p>", unsafe_allow_html=True)
 
 elif btn_sorry:
     st.snow()
     st.markdown("<h1>I am so sorry...</h1>", unsafe_allow_html=True)
-    st.markdown(f"<div class='sorry-box'>Selly, I really wanted to apologize to you because what I did was terrible... I know it's annoying that I keep apologizing, but I promised myself I wouldn't give up because you're the person I'd do anything for, and that won't change no matter what. Forgive me for my mistake and please give me one last chance, which I don't intend to waste, ever. I love you, my honey... I miss you so much...</div>", unsafe_allow_html=True)
+    st.markdown(f"<div class='sorry-box'>Selly, I really wanted to apologize to you... I love you, my honey... I miss you so much...</div>", unsafe_allow_html=True)
 
 elif btn_surprise:
     st.markdown("<h1>Meow! 🐾</h1>", unsafe_allow_html=True)
@@ -82,10 +80,10 @@ elif btn_gift:
     st.markdown("<h1>Your Random Gift! 🎁</h1>", unsafe_allow_html=True)
     
     gifts = [
-        # Neon Heart - Kiss vibe
-        {"text": "Free Kisses 💋", "img": "https://images.unsplash.com/photo-1518133910546-b6c2fb7d79e3?q=80&w=1000&auto=format&fit=crop"},
-        # Teddy Bears - Hug vibe
-        {"text": "Free Hugs 🤗", "img": "https://images.unsplash.com/photo-1555435034-9f88dd91444b?q=80&w=1000&auto=format&fit=crop"},
+        # Kiss - odcisk ust (bardzo stabilny link)
+        {"text": "Free Kisses 💋", "img": "https://images.unsplash.com/photo-1513201099705-a9746e1e201f?q=80&w=1000&auto=format&fit=crop"},
+        # Hug - urocze przytulenie (ilustracja/misie)
+        {"text": "Free Hugs 🤗", "img": "https://images.unsplash.com/photo-1534127392482-fa62dd21382e?q=80&w=1000&auto=format&fit=crop"},
         # Cat
         {"text": "Free Cats 🐱", "img": "https://images.unsplash.com/photo-1533738363-b7f9aef128ce?q=80&w=1000&auto=format&fit=crop"},
         # Chocolate Ice Cream
