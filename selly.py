@@ -105,8 +105,8 @@ elif btn_be:
     st.markdown("<div class='proposal-text'>Girlfriend?</div>", unsafe_allow_html=True)
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
-        # Stabilne zdjęcie z napisem LOVE
-        st.image("https://cdn.pixabay.com/photo/2016/02/17/14/24/love-1205154_1280.jpg", use_container_width=True)
+        # PANCERNY LINK Z WIKIMEDIA - NAPIS LOVE
+        st.image("https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Love_Sign.svg/1024px-Love_Sign.svg.png", use_container_width=True)
 
 else:
     st.write("<br><br>", unsafe_allow_html=True)
