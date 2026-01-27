@@ -82,10 +82,10 @@ elif btn_gift:
     st.markdown("<h1>Your Random Gift! 🎁</h1>", unsafe_allow_html=True)
     
     gifts = [
-        # Kiss Emote / Lips
+        # Neon Heart - Kiss vibe
         {"text": "Free Kisses 💋", "img": "https://images.unsplash.com/photo-1518133910546-b6c2fb7d79e3?q=80&w=1000&auto=format&fit=crop"},
-        # People hugging
-        {"text": "Free Hugs 🤗", "img": "https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=1000&auto=format&fit=crop"},
+        # Teddy Bears - Hug vibe
+        {"text": "Free Hugs 🤗", "img": "https://images.unsplash.com/photo-1555435034-9f88dd91444b?q=80&w=1000&auto=format&fit=crop"},
         # Cat
         {"text": "Free Cats 🐱", "img": "https://images.unsplash.com/photo-1533738363-b7f9aef128ce?q=80&w=1000&auto=format&fit=crop"},
         # Chocolate Ice Cream
