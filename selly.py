@@ -51,19 +51,19 @@ with st.sidebar:
     btn_surprise = st.button("Surprise")
     btn_gift = st.button("Random Gift")
 
-# 4. Logika wyświetlania - NAPRAWIONA STRUKTURA
+# 4. Logika wyświetlania
 if btn_selly:
-    st.markdown("<h1>Hey my world 🌍💙</h1>")
+    st.markdown("<h1>Hey my world 🌍💙</h1>", unsafe_allow_html=True)
     col1, col2, col3 = st.columns([0.8, 2, 0.8])
     with col2:
-        st.image("https://images.unsplash.com/photo-1520763185298-1b434c919102?q=80&w=1000&auto=format&fit=crop", use_container_width=True)
+        st.image("https://cdn.pixabay.com/photo/2017/02/15/10/57/tulips-2068331_1280.jpg", use_container_width=True)
         st.markdown("<p class='tulip-text'>I know how much you love tulips and I want you to be mine tulip</p>", unsafe_allow_html=True)
 
 elif btn_love:
     st.balloons()
     st.markdown("<h1>I love you so much!</h1>", unsafe_allow_html=True)
     st.markdown("<div class='quote-text'>″ ‘I love you all the way down the lane as far as the river... ”</div>", unsafe_allow_html=True)
-    st.markdown("<h1 style='font-size: 80px; text-align: center;'>❤️❤️❤️❤️❤️</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='font-size: 80px;'>❤️❤️❤️❤️❤️</h1>", unsafe_allow_html=True)
 
 elif btn_sorry:
     st.snow()
@@ -74,16 +74,17 @@ elif btn_surprise:
     st.markdown("<h1>Meow! 🐾</h1>", unsafe_allow_html=True)
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
-        st.image("https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?q=80&w=1000&auto=format&fit=crop", use_container_width=True)
+        st.image("https://cdn.pixabay.com/photo/2014/11/30/14/11/cat-551554_1280.jpg", use_container_width=True)
 
 elif btn_gift:
     st.markdown("<h1>Your Random Gift! 🎁</h1>", unsafe_allow_html=True)
     
+    # Stałe linki do konkretnych zdjęć, które działają
     gifts = [
-        {"text": "Free Kisses 💋", "img": "https://images.unsplash.com/photo-1518133910546-b6c2fb7d79e3?q=80&w=1000&auto=format&fit=crop"},
-        {"text": "Free Hugs 🤗", "img": "https://images.unsplash.com/photo-1490902931801-d6f80ca94fe4?q=80&w=1000&auto=format&fit=crop"},
-        {"text": "Free Cats 🐱", "img": "https://images.unsplash.com/photo-1533738363-b7f9aef128ce?q=80&w=1000&auto=format&fit=crop"},
-        {"text": "Free Chocolate Ice Cream 🍦", "img": "https://images.unsplash.com/photo-1563805042-7684c019e1cb?q=80&w=1000&auto=format&fit=crop"}
+        {"text": "Free Kisses 💋", "img": "https://cdn.pixabay.com/photo/2016/11/22/19/05/adult-1850073_1280.jpg"}, # Para
+        {"text": "Free Hugs 🤗", "img": "https://cdn.pixabay.com/photo/2016/11/14/03/05/teddy-bear-1822485_1280.jpg"}, # Miś
+        {"text": "Free Cats 🐱", "img": "https://cdn.pixabay.com/photo/2017/02/20/18/03/cat-2083492_1280.jpg"}, # Kotek
+        {"text": "Free Chocolate Ice Cream 🍦", "img": "https://cdn.pixabay.com/photo/2016/12/26/16/09/bowl-1932375_1280.jpg"} # Lody
     ]
     
     selected_gift = random.choice(gifts)
@@ -92,6 +93,7 @@ elif btn_gift:
     col1, col2, col3 = st.columns([1, 1.5, 1])
     with col2:
         st.image(selected_gift['img'], use_container_width=True)
+    
     st.balloons()
 
 else:
