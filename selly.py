@@ -81,7 +81,7 @@ elif btn_love:
 elif btn_sorry:
     st.snow()
     st.markdown("<h1>I am so sorry...</h1>", unsafe_allow_html=True)
-    st.markdown(f"<div class='sorry-box'>Selly, I really wanted to apologize to you because what I did was terrible... I know it's annoying that I keep apologizing, but I promised myself I wouldn't give up because you're the person I'd do anything for, and that won't change no matter what. Forgive me for my mistake and please give me one last chance, which I don't intend to waste, ever. I love you, my honey... I miss you so much...</div>", unsafe_allow_html=True)
+    st.markdown(f"<div class='sorry-box'>Selly, I really wanted to apologize to you boecause what I did was terrible... I know it's annoying that I keep apologizing, but I promised myself I wouldn't give up because you're the person I'd do anything for, and that won't change no matter what. Forgive me for my mistake and please give me one last chance, which I don't intend to waste, ever. I love you, my honey... I miss you so much...</div>", unsafe_allow_html=True)
 
 elif btn_surprise:
     st.markdown("<h1>Meow! 🐾</h1>", unsafe_allow_html=True)
@@ -93,10 +93,11 @@ elif btn_gift:
     st.markdown("<h1>Your Random Gift! 🎁</h1>", unsafe_allow_html=True)
     
     gifts = [
-        {"text": "Free Kisses 💋", "img": "https://cdn.pixabay.com/photo/2016/11/22/19/05/adult-1850073_1280.jpg"}, # Para
-        {"text": "Free Hugs 🤗", "img": "https://images.pexels.com/photos/45801/teddy-bear-bear-plush-toys-toys-45801.jpeg?auto=compress&cs=tinysrgb&w=800"}, # Miś (Poprawiony link na Pexels)
-        {"text": "Free Cats 🐱", "img": "https://cdn.pixabay.com/photo/2017/02/20/18/03/cat-2083492_1280.jpg"}, # Kotek
-        {"text": "Free Chocolate Ice Cream 🍦", "img": "https://cdn.pixabay.com/photo/2016/12/26/16/09/bowl-1932375_1280.jpg"} # Lody
+        {"text": "Free Kisses 💋", "img": "https://cdn.pixabay.com/photo/2016/11/22/19/05/adult-1850073_1280.jpg"},
+        # Free Hugs - Zmieniony na Wikimedia (maksymalna stabilność)
+        {"text": "Free Hugs 🤗", "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Cute_teddy_bear_stuffed_animal.jpg/800px-Cute_teddy_bear_stuffed_animal.jpg"}, 
+        {"text": "Free Cats 🐱", "img": "https://cdn.pixabay.com/photo/2017/02/20/18/03/cat-2083492_1280.jpg"},
+        {"text": "Free Chocolate Ice Cream 🍦", "img": "https://cdn.pixabay.com/photo/2016/12/26/16/09/bowl-1932375_1280.jpg"}
     ]
     
     selected_gift = random.choice(gifts)
@@ -108,7 +109,6 @@ elif btn_gift:
     
     st.balloons()
 
-# LOGIKA DLA NOWEGO PRZYCISKU
 elif btn_be:
     st.balloons()
     st.markdown("<div class='proposal-text'>Girlfriend?</div>", unsafe_allow_html=True)
