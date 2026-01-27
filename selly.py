@@ -8,8 +8,8 @@ st.set_page_config(page_title="Hey Selly", layout="wide")
 if 'available_gifts' not in st.session_state or len(st.session_state.available_gifts) == 0:
     st.session_state.available_gifts = [
         {"text": "Free Kisses 💋", "img": "https://cdn.pixabay.com/photo/2016/11/22/19/05/adult-1850073_1280.jpg"},
-        # Free Hugs - Nowy, ultra-stabilny link (ikonograficzny miś/uścisk)
-        {"text": "Free Hugs 🤗", "img": "https://img.icons8.com/emoji/400/teddy-bear-emoji.png"}, 
+        # Free Hugs - Link do stabilnego zdjęcia na Imgur
+        {"text": "Free Hugs 🤗", "img": "https://i.imgur.com/39WpAio.jpg"}, 
         {"text": "Free Cats 🐱", "img": "https://cdn.pixabay.com/photo/2017/02/20/18/03/cat-2083492_1280.jpg"},
         {"text": "Free Chocolate Ice Cream 🍦", "img": "https://cdn.pixabay.com/photo/2016/12/26/16/09/bowl-1932375_1280.jpg"}
     ]
@@ -84,7 +84,7 @@ elif btn_love:
 elif btn_sorry:
     st.snow()
     st.markdown("<h1>I am so sorry...</h1>", unsafe_allow_html=True)
-    st.markdown(f"<div class='sorry-box'>Selly, I really wanted to apologize to you boecause what I did was terrible... I know it's annoying that I keep apologizing, but I promised myself I wouldn't give up because you're the person I'd do anything for, and that won't change no matter what. Forgive me for my mistake and please give me one last chance, which I don't intend to waste, ever. I love you, my honey... I miss you so much...</div>", unsafe_allow_html=True)
+    st.markdown(f"<div class='sorry-box'>Selly, I really wanted to apologize to you because what I did was terrible... I know it's annoying that I keep apologizing, but I promised myself I wouldn't give up because you're the person I'd do anything for, and that won't change no matter what. Forgive me for my mistake and please give me one last chance, which I don't intend to waste, ever. I love you, my honey... I miss you so much...</div>", unsafe_allow_html=True)
 
 elif btn_surprise:
     st.markdown("<h1>Meow! 🐾</h1>", unsafe_allow_html=True)
@@ -95,7 +95,6 @@ elif btn_surprise:
 elif btn_gift:
     st.markdown("<h1>Your Random Gift! 🎁</h1>", unsafe_allow_html=True)
     
-    # Wybieramy losowy prezent
     selected_gift = random.choice(st.session_state.available_gifts)
     st.session_state.available_gifts.remove(selected_gift)
     
@@ -110,4 +109,11 @@ elif btn_gift:
 
 elif btn_be:
     st.balloons()
-    st.markdown("<div class='proposal-text'>Girlfriend?</div>", unsafe_allow
+    st.markdown("<div class='proposal-text'>Girlfriend?</div>", unsafe_allow_html=True)
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        st.image("https://cdn.pixabay.com/photo/2017/08/06/20/11/couple-2595861_1280.jpg", use_container_width=True)
+
+else:
+    st.write("<br><br>", unsafe_allow_html=True)
+    st.markdown("<h3 style='color: white; text-align: center;'>Choose something from the menu on the left... 👈</h3>", unsafe_allow_html=True)
