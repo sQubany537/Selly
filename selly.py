@@ -10,6 +10,7 @@ st.markdown("""
     .stApp { background-color: #000000; }
     [data-testid="stSidebar"] { background-color: #000000 !important; border-right: 1px solid #333; }
 
+    /* Przyciski równej długości */
     div.stButton > button {
         background-color: #FF1493 !important;
         color: white !important;
@@ -64,6 +65,7 @@ elif btn_love:
     st.markdown("<h1>I love you so much!</h1>", unsafe_allow_html=True)
     st.markdown("<div class='quote-text'>″ ‘I love you all the way down the lane as far as the river... ”</div>", unsafe_allow_html=True)
     st.markdown("<h1 style='font-size: 80px;'>❤️❤️❤️❤️❤️</h1>", unsafe_allow_html=True)
+    st.markdown("<p style='color: #AAAAAA; text-align: center; font-style: italic;'>My mother used to read me polish version of this book</p>", unsafe_allow_html=True)
 
 elif btn_sorry:
     st.snow()
@@ -79,11 +81,14 @@ elif btn_surprise:
 elif btn_gift:
     st.markdown("<h1>Your Random Gift! 🎁</h1>", unsafe_allow_html=True)
     
-    # Nowe, stabilne linki do zdjęć
     gifts = [
+        # Kiss Emote / Lips
         {"text": "Free Kisses 💋", "img": "https://images.unsplash.com/photo-1518133910546-b6c2fb7d79e3?q=80&w=1000&auto=format&fit=crop"},
+        # People hugging
         {"text": "Free Hugs 🤗", "img": "https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=1000&auto=format&fit=crop"},
+        # Cat
         {"text": "Free Cats 🐱", "img": "https://images.unsplash.com/photo-1533738363-b7f9aef128ce?q=80&w=1000&auto=format&fit=crop"},
+        # Chocolate Ice Cream
         {"text": "Free Chocolate Ice Cream 🍦", "img": "https://images.unsplash.com/photo-1563805042-7684c019e1cb?q=80&w=1000&auto=format&fit=crop"}
     ]
     
