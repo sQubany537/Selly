@@ -92,10 +92,9 @@ elif btn_surprise:
 elif btn_gift:
     st.markdown("<h1>Your Random Gift! 🎁</h1>", unsafe_allow_html=True)
     
-    # Zmieniony link w Free Hugs na bardzo stabilny adres
     gifts = [
         {"text": "Free Kisses 💋", "img": "https://cdn.pixabay.com/photo/2016/11/22/19/05/adult-1850073_1280.jpg"}, # Para
-        {"text": "Free Hugs 🤗", "img": "https://images.unsplash.com/photo-1490902931801-d6f80ca94fe4?q=80&w=1000&auto=format&fit=crop"}, # Miś
+        {"text": "Free Hugs 🤗", "img": "https://images.unsplash.com/photo-1555435034-9f88dd91444b?auto=format&fit=crop&q=80&w=1000"}, # Miś (Poprawiony link)
         {"text": "Free Cats 🐱", "img": "https://cdn.pixabay.com/photo/2017/02/20/18/03/cat-2083492_1280.jpg"}, # Kotek
         {"text": "Free Chocolate Ice Cream 🍦", "img": "https://cdn.pixabay.com/photo/2016/12/26/16/09/bowl-1932375_1280.jpg"} # Lody
     ]
