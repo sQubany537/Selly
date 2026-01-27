@@ -91,17 +91,22 @@ elif btn_surprise:
 
 elif btn_gift:
     st.markdown("<h1>Your Random Gift! 🎁</h1>", unsafe_allow_html=True)
+    
+    # Zmieniony link w Free Hugs na bardzo stabilny adres
     gifts = [
-        {"text": "Free Kisses 💋", "img": "https://cdn.pixabay.com/photo/2016/11/22/19/05/adult-1850073_1280.jpg"},
-        {"text": "Free Hugs 🤗", "img": "https://cdn.pixabay.com/photo/2016/11/14/03/05/teddy-bear-1822485_1280.jpg"},
-        {"text": "Free Cats 🐱", "img": "https://cdn.pixabay.com/photo/2017/02/20/18/03/cat-2083492_1280.jpg"},
-        {"text": "Free Chocolate Ice Cream 🍦", "img": "https://cdn.pixabay.com/photo/2016/12/26/16/09/bowl-1932375_1280.jpg"}
+        {"text": "Free Kisses 💋", "img": "https://cdn.pixabay.com/photo/2016/11/22/19/05/adult-1850073_1280.jpg"}, # Para
+        {"text": "Free Hugs 🤗", "img": "https://images.unsplash.com/photo-1490902931801-d6f80ca94fe4?q=80&w=1000&auto=format&fit=crop"}, # Miś
+        {"text": "Free Cats 🐱", "img": "https://cdn.pixabay.com/photo/2017/02/20/18/03/cat-2083492_1280.jpg"}, # Kotek
+        {"text": "Free Chocolate Ice Cream 🍦", "img": "https://cdn.pixabay.com/photo/2016/12/26/16/09/bowl-1932375_1280.jpg"} # Lody
     ]
+    
     selected_gift = random.choice(gifts)
     st.markdown(f"<h3>{selected_gift['text']}</h3>", unsafe_allow_html=True)
+    
     col1, col2, col3 = st.columns([1, 1.5, 1])
     with col2:
         st.image(selected_gift['img'], use_container_width=True)
+    
     st.balloons()
 
 # LOGIKA DLA NOWEGO PRZYCISKU
@@ -110,7 +115,6 @@ elif btn_be:
     st.markdown("<div class='proposal-text'>Girlfriend?</div>", unsafe_allow_html=True)
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
-        # Romantyczne zdjęcie pary lub symbolu miłości
         st.image("https://cdn.pixabay.com/photo/2017/08/06/20/11/couple-2595861_1280.jpg", use_container_width=True)
 
 else:
