@@ -36,6 +36,11 @@ st.markdown("""
         background-color: rgba(255, 255, 255, 0.05); font-style: italic;
     }
 
+    .date-text {
+        font-size: 60px; font-weight: bold; color: #FFFFFF;
+        text-shadow: 0px 0px 20px #FF1493; text-align: center; margin-top: 50px;
+    }
+
     .proposal-text {
         font-size: 80px; font-weight: bold; color: #FF69B4;
         text-shadow: 0px 0px 30px #FF1493; text-align: center; margin-top: 50px;
@@ -55,6 +60,7 @@ with st.sidebar:
     btn_sorry = st.button("I want to say sorry :(")
     btn_surprise = st.button("Surprise")
     btn_gift = st.button("Random Gift")
+    btn_dates = st.button("Special Dates")  # NOWY PRZYCISK
     btn_be = st.button("Will you be my...")
 
 # 4. Logika wyświetlania
@@ -97,12 +103,17 @@ elif btn_gift:
         st.image(selected_gift['img'], use_container_width=True)
     st.balloons()
 
+elif btn_dates:  # LOGIKA DLA NOWEGO PRZYCISKU
+    st.snow()
+    st.markdown("<h1>Our Special Date 🌹</h1>", unsafe_allow_html=True)
+    st.markdown("<div class='date-text'>12.03.2025r.</div>", unsafe_allow_html=True)
+    st.markdown("<h3 style='color: white;'>Save the date, honey... ✨</h3>", unsafe_allow_html=True)
+
 elif btn_be:
     st.balloons()
     st.markdown("<div class='proposal-text'>Girlfriend?</div>", unsafe_allow_html=True)
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
-        # Kod rysujący serce z napisem LOVE - to nie jest link, to instrukcja rysowania.
         st.markdown("""
             <div style="text-align: center;">
                 <svg width="300" height="300" viewBox="0 0 24 24" fill="#FF1493" xmlns="http://www.w3.org/2000/svg">
