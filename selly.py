@@ -4,41 +4,41 @@ import random
 # 1. Konfiguracja strony
 st.set_page_config(page_title="Hey Selly", layout="wide")
 
-# 2. CSS - Style
+# 2. CSS - Style (Zamiana różu na błękit)
 st.markdown("""
 <style>
     .stApp { background-color: #000000; }
     [data-testid="stSidebar"] { background-color: #000000 !important; border-right: 1px solid #333; }
 
     div.stButton > button {
-        background-color: #FF1493 !important;
+        background-color: #00BFFF !important; /* DeepSkyBlue */
         color: white !important;
         border: none;
         padding: 15px 10px;
         font-size: 18px;
         font-weight: bold;
         border-radius: 50px;
-        box-shadow: 0px 0px 15px #FF1493;
+        box-shadow: 0px 0px 15px #00BFFF;
         transition: 0.3s;
         display: block;
         width: 250px; 
         margin: 10px auto;
     }
 
-    div.stButton > button:hover { transform: scale(1.05); box-shadow: 0px 0px 25px #FF1493; }
+    div.stButton > button:hover { transform: scale(1.05); box-shadow: 0px 0px 25px #1E90FF; }
 
-    h1, h2, h3 { color: #FF1493 !important; text-align: center; }
+    h1, h2, h3 { color: #00BFFF !important; text-align: center; }
     
     .sorry-box {
         color: white; text-align: center; font-size: 20px; line-height: 1.8;
         max-width: 700px; margin: 40px auto; padding: 30px;
-        border: 1px solid rgba(255, 20, 147, 0.3); border-radius: 20px;
+        border: 1px solid rgba(0, 191, 255, 0.3); border-radius: 20px;
         background-color: rgba(255, 255, 255, 0.05); font-style: italic;
     }
 
     .date-text {
         font-size: 60px; font-weight: bold; color: #FFFFFF;
-        text-shadow: 0px 0px 20px #FF1493; text-align: center; margin-top: 50px;
+        text-shadow: 0px 0px 20px #00BFFF; text-align: center; margin-top: 50px;
     }
 
     .coming-soon {
@@ -46,13 +46,13 @@ st.markdown("""
     }
 
     .proposal-text {
-        font-size: 80px; font-weight: bold; color: #FF69B4;
-        text-shadow: 0px 0px 30px #FF1493; text-align: center; margin-top: 50px;
+        font-size: 80px; font-weight: bold; color: #1E90FF;
+        text-shadow: 0px 0px 30px #00BFFF; text-align: center; margin-top: 50px;
     }
 
     .quote-text, .tulip-text { color: white; text-align: center; font-size: 22px; font-style: italic; }
 
-    img { border-radius: 15px; box-shadow: 0px 0px 15px rgba(255, 20, 147, 0.3); }
+    img { border-radius: 15px; box-shadow: 0px 0px 15px rgba(0, 191, 255, 0.3); }
 </style>
 """, unsafe_allow_html=True)
 
@@ -79,7 +79,7 @@ elif btn_love:
     st.balloons()
     st.markdown("<h1>I love you so much!</h1>", unsafe_allow_html=True)
     st.markdown("<div class='quote-text'>″ ‘I love you all the way down the lane as far as the river... ”</div>", unsafe_allow_html=True)
-    st.markdown("<h1 style='font-size: 80px;'>❤️❤️❤️❤️❤️</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='font-size: 80px;'>💙💙💙💙💙</h1>", unsafe_allow_html=True)
 
 elif btn_sorry:
     st.snow()
@@ -119,9 +119,10 @@ elif btn_be:
     st.markdown("<div class='proposal-text'>Girlfriend?</div>", unsafe_allow_html=True)
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
+        # Kod rysujący serce z napisem LOVE - teraz w kolorze błękitnym (#00BFFF)
         st.markdown("""
             <div style="text-align: center;">
-                <svg width="300" height="300" viewBox="0 0 24 24" fill="#FF1493" xmlns="http://www.w3.org/2000/svg">
+                <svg width="300" height="300" viewBox="0 0 24 24" fill="#00BFFF" xmlns="http://www.w3.org/2000/svg">
                     <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
                     <text x="12" y="11" font-family="Arial" font-size="3.5" fill="white" text-anchor="middle" font-weight="bold">LOVE</text>
                 </svg>
