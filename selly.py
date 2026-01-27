@@ -1,4 +1,5 @@
 import streamlit as st
+import random
 
 # 1. Konfiguracja strony
 st.set_page_config(page_title="Hey Selly", layout="wide")
@@ -15,7 +16,6 @@ st.markdown("""
         border-right: 1px solid #333;
     }
 
-    /* Stylizacja przycisków - równej długości */
     div.stButton > button {
         background-color: #FF1493 !important;
         color: white !important;
@@ -52,34 +52,14 @@ st.markdown("""
         border: 1px solid rgba(255, 20, 147, 0.3);
         border-radius: 20px;
         background-color: rgba(255, 255, 255, 0.05);
-        box-shadow: 0px 0px 20px rgba(255, 20, 147, 0.1);
         font-style: italic;
     }
 
-    .quote-text {
+    .quote-text, .tulip-text {
         color: white;
         text-align: center;
         font-size: 22px;
         font-style: italic;
-        line-height: 1.6;
-        margin: 30px auto;
-        max-width: 800px;
-    }
-
-    .personal-note {
-        color: #AAAAAA;
-        text-align: center;
-        font-size: 16px;
-        font-style: italic;
-        margin-top: 40px;
-    }
-
-    .tulip-text {
-        color: white;
-        text-align: center;
-        font-size: 24px;
-        font-style: italic;
-        margin-top: 25px;
     }
 
     img {
@@ -96,6 +76,7 @@ with st.sidebar:
     btn_love = st.button("I love you")
     btn_sorry = st.button("I want to say sorry :(")
     btn_surprise = st.button("Surprise")
+    btn_gift = st.button("Random Gift")
 
 # 4. Logika wyświetlania
 if btn_selly:
@@ -108,36 +89,38 @@ if btn_selly:
 elif btn_love:
     st.balloons()
     st.markdown("<h1>I love you so much!</h1>", unsafe_allow_html=True)
-    st.markdown("""
-        <div class='quote-text'>
-            ″ ‘I love you all the way down the lane as far as the river,’ cried Little Nutbrown Hare. <br>
-            ‘I love you across the river and over the hills,’ said Big Nutbrown Hare. ”
-        </div>
-    """, unsafe_allow_html=True)
+    st.markdown("<div class='quote-text'>″ ‘I love you all the way down the lane as far as the river... ”</div>", unsafe_allow_html=True)
     st.markdown("<h1 style='font-size: 80px;'>❤️❤️❤️❤️❤️</h1>", unsafe_allow_html=True)
-    st.markdown("<p class='personal-note'>My mother used to read me polish version of this book</p>", unsafe_allow_html=True)
 
 elif btn_sorry:
     st.snow()
     st.markdown("<h1>I am so sorry...</h1>", unsafe_allow_html=True)
-    st.markdown(f"""
-        <div class='sorry-box'>
-            Selly, I really wanted to apologize to you because what I did was terrible... 
-            I know it's annoying that I keep apologizing, but I promised myself I wouldn't give up 
-            because you're the person I'd do anything for, and that won't change no matter what. 
-            <br><br>
-            Forgive me for my mistake and please give me one last chance, which I don't intend to waste, ever. 
-            <br><br>
-            I love you, my honey... I miss you so much...
-        </div>
-    """, unsafe_allow_html=True)
+    st.markdown(f"<div class='sorry-box'>Selly, I really wanted to apologize... I love you, my honey...</div>", unsafe_allow_html=True)
 
 elif btn_surprise:
     st.markdown("<h1>Meow! 🐾</h1>", unsafe_allow_html=True)
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
-        # Zdjęcie słodkiego kotka
         st.image("https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?q=80&w=1000&auto=format&fit=crop", use_container_width=True)
+
+elif btn_gift:
+    st.markdown("<h1>Your Random Gift! 🎁</h1>", unsafe_allow_html=True)
+    
+    # Lista prezentów
+    gifts = [
+        {"text": "Free Kisses 💋", "img": "http://googleusercontent.com/image_collection/image_retrieval/16272483029672475839_0"},
+        {"text": "Free Hugs 🤗", "img": "http://googleusercontent.com/image_collection/image_retrieval/16578469826886095072_0"},
+        {"text": "Free Cats 🐱", "img": "http://googleusercontent.com/image_collection/image_retrieval/8059778875020457382_0"},
+        {"text": "Free Chocolate Ice Cream 🍦", "img": "http://googleusercontent.com/image_collection/image_retrieval/18198086662535027543_0"}
+    ]
+    
+    # Losowanie
+    selected_gift = random.choice(gifts)
+    
+    st.markdown(f"<h3>{selected_gift['text']}</h3>", unsafe_allow_html=True)
+    col1, col2, col3 = st.columns([1, 1.5, 1])
+    with col2:
+        st.image(selected_gift['img'], use_container_width=True)
 
 else:
     st.write("<br><br>", unsafe_allow_html=True)
