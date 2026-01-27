@@ -56,7 +56,7 @@ if btn_selly:
     st.markdown("<h1>Hey my world 🌍💙</h1>", unsafe_allow_html=True)
     col1, col2, col3 = st.columns([0.8, 2, 0.8])
     with col2:
-        st.image("https://images.unsplash.com/photo-1521236194091-030999589d9c?q=80&w=1000&auto=format&fit=crop", use_container_width=True)
+        st.image("https://loremflickr.com/800/600/tulip,blue", use_container_width=True)
         st.markdown("<p class='tulip-text'>I know how much you love tulips and I want you to be mine tulip</p>", unsafe_allow_html=True)
 
 elif btn_love:
@@ -74,18 +74,16 @@ elif btn_surprise:
     st.markdown("<h1>Meow! 🐾</h1>", unsafe_allow_html=True)
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
-        # Stabilny link do losowego kotka
         st.image("https://placekitten.com/600/400", use_container_width=True)
 
 elif btn_gift:
     st.markdown("<h1>Your Random Gift! 🎁</h1>", unsafe_allow_html=True)
     
-    # Używamy linków, które generują obrazy dynamicznie (bardzo stabilne)
     gifts = [
-        {"text": "Free Kisses 💋", "img": "https://images.unsplash.com/photo-1518133910546-b6c2fb7d79e3?auto=format&fit=crop&w=600"},
-        {"text": "Free Hugs 🤗", "img": "https://images.unsplash.com/photo-1555435034-9f88dd91444b?auto=format&fit=crop&w=600"},
+        {"text": "Free Kisses 💋", "img": "https://loremflickr.com/600/400/kiss,heart"},
+        {"text": "Free Hugs 🤗", "img": "https://loremflickr.com/600/400/hug,teddybear"},
         {"text": "Free Cats 🐱", "img": "https://placekitten.com/601/401"},
-        {"text": "Free Chocolate Ice Cream 🍦", "img": "https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=600"}
+        {"text": "Free Chocolate Ice Cream 🍦", "img": "https://loremflickr.com/600/400/chocolate,icecream"}
     ]
     
     selected_gift = random.choice(gifts)
@@ -95,8 +93,7 @@ elif btn_gift:
     with col2:
         st.image(selected_gift['img'], use_container_width=True)
     
-    # Dodatkowy efekt radości przy losowaniu
-    st.confetti()
+    st.balloons() # To zastępuje confetti i działa bez błędów
 
 else:
     st.write("<br><br>", unsafe_allow_html=True)
