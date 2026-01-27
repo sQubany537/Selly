@@ -62,7 +62,6 @@ if btn_selly:
     st.markdown("<h1>Hey my world 🌍💙</h1>", unsafe_allow_html=True)
     col1, col2, col3 = st.columns([0.8, 2, 0.8])
     with col2:
-        # NOWE ZDJĘCIE TULIPANA
         st.image("https://images.unsplash.com/photo-1589244159943-460088ed5c92?q=80&w=1000&auto=format&fit=crop", use_container_width=True)
         st.markdown("<p class='tulip-text'>I know how much you love tulips and I want you to be mine tulip</p>", unsafe_allow_html=True)
 
@@ -106,7 +105,8 @@ elif btn_be:
     st.markdown("<div class='proposal-text'>Girlfriend?</div>", unsafe_allow_html=True)
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
-        st.image("https://cdn.pixabay.com/photo/2017/08/06/20/11/couple-2595861_1280.jpg", use_container_width=True)
+        # NOWE ZDJĘCIE Z NAPISEM LOVE
+        st.image("https://images.unsplash.com/photo-1518199266791-739d6ffc8ec5?q=80&w=1000&auto=format&fit=crop", use_container_width=True)
 
 else:
     st.write("<br><br>", unsafe_allow_html=True)
