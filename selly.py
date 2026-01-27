@@ -4,13 +4,21 @@ import random
 # 1. Konfiguracja strony
 st.set_page_config(page_title="Hey Selly", layout="wide")
 
-# 2. CSS - Style
+# 2. Inicjalizacja pamięci (żeby zdjęcia się nie powtarzały)
+if 'available_gifts' not in st.session_state or len(st.session_state.available_gifts) == 0:
+    st.session_state.available_gifts = [
+        {"text": "Free Kisses 💋", "img": "https://cdn.pixabay.com/photo/2016/11/22/19/05/adult-1850073_1280.jpg"},
+        {"text": "Free Hugs 🤗", "img": "https://images.unsplash.com/photo-1555435034-9f88dd91444b?auto=format&fit=crop&q=80&w=800"}, 
+        {"text": "Free Cats 🐱", "img": "https://cdn.pixabay.com/photo/2017/02/20/18/03/cat-2083492_1280.jpg"},
+        {"text": "Free Chocolate Ice Cream 🍦", "img": "https://cdn.pixabay.com/photo/2016/12/26/16/09/bowl-1932375_1280.jpg"}
+    ]
+
+# 3. CSS - Style
 st.markdown("""
 <style>
     .stApp { background-color: #000000; }
     [data-testid="stSidebar"] { background-color: #000000 !important; border-right: 1px solid #333; }
 
-    /* Stylizacja przycisków - wszystkie równej długości */
     div.stButton > button {
         background-color: #FF1493 !important;
         color: white !important;
@@ -37,14 +45,9 @@ st.markdown("""
         background-color: rgba(255, 255, 255, 0.05); font-style: italic;
     }
 
-    /* Specjalny styl dla pytania o bycie dziewczyną */
     .proposal-text {
-        font-size: 80px;
-        font-weight: bold;
-        color: #FF69B4;
-        text-shadow: 0px 0px 30px #FF1493;
-        text-align: center;
-        margin-top: 50px;
+        font-size: 80px; font-weight: bold; color: #FF69B4;
+        text-shadow: 0px 0px 30px #FF1493; text-align: center; margin-top: 50px;
     }
 
     .quote-text, .tulip-text { color: white; text-align: center; font-size: 22px; font-style: italic; }
@@ -53,7 +56,7 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# 3. Pasek boczny
+# 4. Pasek boczny
 with st.sidebar:
     st.markdown("<h2 style='color: white;'>MENU</h2>", unsafe_allow_html=True)
     btn_selly = st.button("Hey Selly")
@@ -61,10 +64,9 @@ with st.sidebar:
     btn_sorry = st.button("I want to say sorry :(")
     btn_surprise = st.button("Surprise")
     btn_gift = st.button("Random Gift")
-    # NOWY PRZYCISK
     btn_be = st.button("Will you be my...")
 
-# 4. Logika wyświetlania
+# 5. Logika wyświetlania
 if btn_selly:
     st.markdown("<h1>Hey my world 🌍💙</h1>", unsafe_allow_html=True)
     col1, col2, col3 = st.columns([0.8, 2, 0.8])
@@ -92,22 +94,19 @@ elif btn_surprise:
 elif btn_gift:
     st.markdown("<h1>Your Random Gift! 🎁</h1>", unsafe_allow_html=True)
     
-    gifts = [
-        {"text": "Free Kisses 💋", "img": "https://cdn.pixabay.com/photo/2016/11/22/19/05/adult-1850073_1280.jpg"},
-        # Free Hugs - Użycie PlaceBear (serwer dedykowany obrazkom misiów, bardzo stabilny)
-        {"text": "Free Hugs 🤗", "img": "https://placebear.com/800/600"}, 
-        {"text": "Free Cats 🐱", "img": "https://cdn.pixabay.com/photo/2017/02/20/18/03/cat-2083492_1280.jpg"},
-        {"text": "Free Chocolate Ice Cream 🍦", "img": "https://cdn.pixabay.com/photo/2016/12/26/16/09/bowl-1932375_1280.jpg"}
-    ]
+    # Wybieramy losowy prezent z tych, które zostały
+    selected_gift = random.choice(st.session_state.available_gifts)
+    # Usuwamy go z listy, żeby się nie powtórzył
+    st.session_state.available_gifts.remove(selected_gift)
     
-    selected_gift = random.choice(gifts)
     st.markdown(f"<h3>{selected_gift['text']}</h3>", unsafe_allow_html=True)
-    
     col1, col2, col3 = st.columns([1, 1.5, 1])
     with col2:
         st.image(selected_gift['img'], use_container_width=True)
-    
     st.balloons()
+    
+    if len(st.session_state.available_gifts) == 0:
+        st.info("To były wszystkie prezenty! Kliknij jeszcze raz, żeby zresetować pulę.")
 
 elif btn_be:
     st.balloons()
