@@ -10,7 +10,7 @@ st.markdown("""
     .stApp { background-color: #000000; }
     [data-testid="stSidebar"] { background-color: #000000 !important; border-right: 1px solid #333; }
 
-    /* Przyciski równej długości */
+    /* Stylizacja przycisków - wszystkie równej długości */
     div.stButton > button {
         background-color: #FF1493 !important;
         color: white !important;
@@ -37,11 +37,13 @@ st.markdown("""
         background-color: rgba(255, 255, 255, 0.05); font-style: italic;
     }
 
+    /* Specjalny styl dla pytania o bycie dziewczyną */
     .proposal-text {
         font-size: 80px;
         font-weight: bold;
-        color: #FF1493;
-        text-shadow: 0px 0px 20px #FF1493;
+        color: #FF69B4;
+        text-shadow: 0px 0px 30px #FF1493;
+        text-align: center;
         margin-top: 50px;
     }
 
@@ -59,14 +61,15 @@ with st.sidebar:
     btn_sorry = st.button("I want to say sorry :(")
     btn_surprise = st.button("Surprise")
     btn_gift = st.button("Random Gift")
-    btn_proposal = st.button("Will you be...")
+    # NOWY PRZYCISK
+    btn_be = st.button("Will you be...")
 
 # 4. Logika wyświetlania
 if btn_selly:
     st.markdown("<h1>Hey my world 🌍💙</h1>", unsafe_allow_html=True)
     col1, col2, col3 = st.columns([0.8, 2, 0.8])
     with col2:
-        st.image("https://images.unsplash.com/photo-1520763185298-1b434c919102?q=80&w=1000&auto=format&fit=crop", use_container_width=True)
+        st.image("https://cdn.pixabay.com/photo/2017/02/15/10/57/tulips-2068331_1280.jpg", use_container_width=True)
         st.markdown("<p class='tulip-text'>I know how much you love tulips and I want you to be mine tulip</p>", unsafe_allow_html=True)
 
 elif btn_love:
@@ -84,15 +87,15 @@ elif btn_surprise:
     st.markdown("<h1>Meow! 🐾</h1>", unsafe_allow_html=True)
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
-        st.image("https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?q=80&w=1000&auto=format&fit=crop", use_container_width=True)
+        st.image("https://cdn.pixabay.com/photo/2014/11/30/14/11/cat-551554_1280.jpg", use_container_width=True)
 
 elif btn_gift:
     st.markdown("<h1>Your Random Gift! 🎁</h1>", unsafe_allow_html=True)
     gifts = [
-        {"text": "Free Kisses 💋", "img": "https://images.unsplash.com/photo-1518133910546-b6c2fb7d79e3?q=80&w=1000&auto=format&fit=crop"},
-        {"text": "Free Hugs 🤗", "img": "https://images.unsplash.com/photo-1555435034-9f88dd91444b?q=80&w=1000&auto=format&fit=crop"},
-        {"text": "Free Cats 🐱", "img": "https://images.unsplash.com/photo-1533738363-b7f9aef128ce?q=80&w=1000&auto=format&fit=crop"},
-        {"text": "Free Chocolate Ice Cream 🍦", "img": "https://images.unsplash.com/photo-1563805042-7684c019e1cb?q=80&w=1000&auto=format&fit=crop"}
+        {"text": "Free Kisses 💋", "img": "https://cdn.pixabay.com/photo/2016/11/22/19/05/adult-1850073_1280.jpg"},
+        {"text": "Free Hugs 🤗", "img": "https://cdn.pixabay.com/photo/2016/11/14/03/05/teddy-bear-1822485_1280.jpg"},
+        {"text": "Free Cats 🐱", "img": "https://cdn.pixabay.com/photo/2017/02/20/18/03/cat-2083492_1280.jpg"},
+        {"text": "Free Chocolate Ice Cream 🍦", "img": "https://cdn.pixabay.com/photo/2016/12/26/16/09/bowl-1932375_1280.jpg"}
     ]
     selected_gift = random.choice(gifts)
     st.markdown(f"<h3>{selected_gift['text']}</h3>", unsafe_allow_html=True)
@@ -101,13 +104,14 @@ elif btn_gift:
         st.image(selected_gift['img'], use_container_width=True)
     st.balloons()
 
-elif btn_proposal:
+# LOGIKA DLA NOWEGO PRZYCISKU
+elif btn_be:
     st.balloons()
-    st.markdown("<h1 class='proposal-text'>Girlfriend?</h1>", unsafe_allow_html=True)
-    col1, col2, col3 = st.columns([1, 1.5, 1])
+    st.markdown("<div class='proposal-text'>Girlfriend?</div>", unsafe_allow_html=True)
+    col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
-        # Zdjęcie symbolizujące romantyczne pytanie
-        st.image("https://images.unsplash.com/photo-1516589174462-c75d5466b9af?q=80&w=1000&auto=format&fit=crop", use_container_width=True)
+        # Romantyczne zdjęcie pary lub symbolu miłości
+        st.image("https://cdn.pixabay.com/photo/2017/08/06/20/11/couple-2595861_1280.jpg", use_container_width=True)
 
 else:
     st.write("<br><br>", unsafe_allow_html=True)
