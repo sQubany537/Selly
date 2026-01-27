@@ -79,15 +79,12 @@ elif btn_surprise:
 elif btn_gift:
     st.markdown("<h1>Your Random Gift! 🎁</h1>", unsafe_allow_html=True)
     
+    # Nowe linki z Pixabay/Wikimedia (bardzo stabilne)
     gifts = [
-        # Kiss - odcisk ust (bardzo stabilny link)
-        {"text": "Free Kisses 💋", "img": "https://images.unsplash.com/photo-1513201099705-a9746e1e201f?q=80&w=1000&auto=format&fit=crop"},
-        # Hug - urocze przytulenie (ilustracja/misie)
-        {"text": "Free Hugs 🤗", "img": "https://images.unsplash.com/photo-1534127392482-fa62dd21382e?q=80&w=1000&auto=format&fit=crop"},
-        # Cat
-        {"text": "Free Cats 🐱", "img": "https://images.unsplash.com/photo-1533738363-b7f9aef128ce?q=80&w=1000&auto=format&fit=crop"},
-        # Chocolate Ice Cream
-        {"text": "Free Chocolate Ice Cream 🍦", "img": "https://images.unsplash.com/photo-1563805042-7684c019e1cb?q=80&w=1000&auto=format&fit=crop"}
+        {"text": "Free Kisses 💋", "img": "https://cdn.pixabay.com/photo/2017/02/11/14/19/love-2057798_1280.png"},
+        {"text": "Free Hugs 🤗", "img": "https://cdn.pixabay.com/photo/2016/11/14/03/05/teddy-bear-1822485_1280.jpg"},
+        {"text": "Free Cats 🐱", "img": "https://cdn.pixabay.com/photo/2017/02/20/18/03/cat-2083492_1280.jpg"},
+        {"text": "Free Chocolate Ice Cream 🍦", "img": "https://cdn.pixabay.com/photo/2016/12/26/16/09/bowl-1932375_1280.jpg"}
     ]
     
     selected_gift = random.choice(gifts)
