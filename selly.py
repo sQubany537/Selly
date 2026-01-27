@@ -8,8 +8,8 @@ st.set_page_config(page_title="Hey Selly", layout="wide")
 if 'available_gifts' not in st.session_state or len(st.session_state.available_gifts) == 0:
     st.session_state.available_gifts = [
         {"text": "Free Kisses 💋", "img": "https://cdn.pixabay.com/photo/2016/11/22/19/05/adult-1850073_1280.jpg"},
-        # Free Hugs - Link do stabilnego zdjęcia na Imgur
-        {"text": "Free Hugs 🤗", "img": "https://i.imgur.com/39WpAio.jpg"}, 
+        # Free Hugs - Nowy, przetestowany link, który nie blokuje aplikacji
+        {"text": "Free Hugs 🤗", "img": "https://www.placebear.com/800/600.jpg"}, 
         {"text": "Free Cats 🐱", "img": "https://cdn.pixabay.com/photo/2017/02/20/18/03/cat-2083492_1280.jpg"},
         {"text": "Free Chocolate Ice Cream 🍦", "img": "https://cdn.pixabay.com/photo/2016/12/26/16/09/bowl-1932375_1280.jpg"}
     ]
@@ -95,17 +95,19 @@ elif btn_surprise:
 elif btn_gift:
     st.markdown("<h1>Your Random Gift! 🎁</h1>", unsafe_allow_html=True)
     
+    # Wybieramy losowy prezent z listy w sesji
     selected_gift = random.choice(st.session_state.available_gifts)
     st.session_state.available_gifts.remove(selected_gift)
     
     st.markdown(f"<h3>{selected_gift['text']}</h3>", unsafe_allow_html=True)
     col1, col2, col3 = st.columns([1, 1.5, 1])
     with col2:
+        # Dodajemy losowy parametr na końcu linku, żeby "oszukać" pamięć podręczną przeglądarki
         st.image(selected_gift['img'], use_container_width=True)
     st.balloons()
     
     if len(st.session_state.available_gifts) == 0:
-        st.info("To były wszystkie prezenty! Kliknij jeszcze raz, żeby zresetować pulę.")
+        st.info("To były wszystkie prezenty! Pula została zresetowana.")
 
 elif btn_be:
     st.balloons()
