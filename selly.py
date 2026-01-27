@@ -62,7 +62,8 @@ if btn_selly:
     st.markdown("<h1>Hey my world 🌍💙</h1>", unsafe_allow_html=True)
     col1, col2, col3 = st.columns([0.8, 2, 0.8])
     with col2:
-        st.image("https://cdn.pixabay.com/photo/2017/02/15/10/57/tulips-2068331_1280.jpg", use_container_width=True)
+        # NOWE ZDJĘCIE TULIPANA
+        st.image("https://images.unsplash.com/photo-1589244159943-460088ed5c92?q=80&w=1000&auto=format&fit=crop", use_container_width=True)
         st.markdown("<p class='tulip-text'>I know how much you love tulips and I want you to be mine tulip</p>", unsafe_allow_html=True)
 
 elif btn_love:
@@ -85,7 +86,6 @@ elif btn_surprise:
 elif btn_gift:
     st.markdown("<h1>Your Random Gift! 🎁</h1>", unsafe_allow_html=True)
     
-    # Lista prezentów dostępna zawsze przy każdym kliknięciu
     gifts = [
         {"text": "Free Kisses 💋", "img": "https://cdn.pixabay.com/photo/2016/11/22/19/05/adult-1850073_1280.jpg"},
         {"text": "Free Hugs 🤗", "img": "https://www.placebear.com/800/600.jpg"}, 
@@ -93,7 +93,6 @@ elif btn_gift:
         {"text": "Free Chocolate Ice Cream 🍦", "img": "https://cdn.pixabay.com/photo/2016/12/26/16/09/bowl-1932375_1280.jpg"}
     ]
     
-    # Czyste losowanie - bez usuwania z listy
     selected_gift = random.choice(gifts)
     
     st.markdown(f"<h3>{selected_gift['text']}</h3>", unsafe_allow_html=True)
