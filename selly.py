@@ -62,7 +62,7 @@ with st.sidebar:
     btn_surprise = st.button("Surprise")
     btn_gift = st.button("Random Gift")
     # NOWY PRZYCISK
-    btn_be = st.button("Will you be...")
+    btn_be = st.button("Will you be my...")
 
 # 4. Logika wyświetlania
 if btn_selly:
