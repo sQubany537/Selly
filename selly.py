@@ -41,6 +41,10 @@ st.markdown("""
         text-shadow: 0px 0px 20px #FF1493; text-align: center; margin-top: 50px;
     }
 
+    .coming-soon {
+        color: rgba(255, 255, 255, 0.6); text-align: center; font-size: 18px; font-style: italic; margin-top: 10px;
+    }
+
     .proposal-text {
         font-size: 80px; font-weight: bold; color: #FF69B4;
         text-shadow: 0px 0px 30px #FF1493; text-align: center; margin-top: 50px;
@@ -60,7 +64,7 @@ with st.sidebar:
     btn_sorry = st.button("I want to say sorry :(")
     btn_surprise = st.button("Surprise")
     btn_gift = st.button("Random Gift")
-    btn_dates = st.button("Special Dates")  # NOWY PRZYCISK
+    btn_dates = st.button("Special Dates")
     btn_be = st.button("Will you be my...")
 
 # 4. Logika wyświetlania
@@ -103,11 +107,12 @@ elif btn_gift:
         st.image(selected_gift['img'], use_container_width=True)
     st.balloons()
 
-elif btn_dates:  # LOGIKA DLA NOWEGO PRZYCISKU
+elif btn_dates:
     st.snow()
     st.markdown("<h1>Our Special Date 🌹</h1>", unsafe_allow_html=True)
     st.markdown("<div class='date-text'>12.03.2025r.</div>", unsafe_allow_html=True)
-    st.markdown("<h3 style='color: white;'>Save the date, honey... ✨</h3>", unsafe_allow_html=True)
+    st.markdown("<p class='coming-soon'>more dates coming soon...</p>", unsafe_allow_html=True)
+    st.markdown("<h3 style='color: white; margin-top: 30px;'>Save the date, honey... ✨</h3>", unsafe_allow_html=True)
 
 elif btn_be:
     st.balloons()
