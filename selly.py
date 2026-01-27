@@ -95,7 +95,7 @@ with st.sidebar:
     btn_selly = st.button("Hey Selly")
     btn_love = st.button("I love you")
     btn_sorry = st.button("I want to say sorry :(")
-    btn_4 = st.button("Niespodzianka")
+    btn_surprise = st.button("Surprise")
 
 # 4. Logika wyświetlania
 if btn_selly:
@@ -132,10 +132,13 @@ elif btn_sorry:
         </div>
     """, unsafe_allow_html=True)
 
-elif btn_4:
-    st.markdown("<h1>✨ Jesteś wyjątkowa! ✨</h1>", unsafe_allow_html=True)
+elif btn_surprise:
+    st.markdown("<h1>Meow! 🐾</h1>", unsafe_allow_html=True)
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Zdjęcie słodkiego kotka
+        st.image("https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?q=80&w=1000&auto=format&fit=crop", use_container_width=True)
 
 else:
-    # Zmieniony napis startowy na prośbę użytkownika
     st.write("<br><br>", unsafe_allow_html=True)
     st.markdown("<h3 style='color: white; text-align: center;'>Choose something from the menu on the left... 👈</h3>", unsafe_allow_html=True)
