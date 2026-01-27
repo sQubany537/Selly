@@ -74,7 +74,7 @@ elif btn_love:
 elif btn_sorry:
     st.snow()
     st.markdown("<h1>I am so sorry...</h1>", unsafe_allow_html=True)
-    st.markdown(f"<div class='sorry-box'>Selly, I really wanted to apologize to you because what I did was terrible... I know it's annoying that I keep apologizing, but I promised myself I wouldn't give up because you're the person I'd do anything for, and that won't change no matter what. Forgive me for my mistake and please give me one last chance, which I don't intend to waste, ever. I love you, my honey... I miss you so much...</div>", unsafe_allow_html=True)
+    st.markdown(f"<div class='sorry-box'>Selly, I really wanted to apologize to you boecause what I did was terrible... I know it's annoying that I keep apologizing, but I promised myself I wouldn't give up because you're the person I'd do anything for, and that won't change no matter what. Forgive me for my mistake and please give me one last chance, which I don't intend to waste, ever. I love you, my honey... I miss you so much...</div>", unsafe_allow_html=True)
 
 elif btn_surprise:
     st.markdown("<h1>Meow! 🐾</h1>", unsafe_allow_html=True)
@@ -105,11 +105,8 @@ elif btn_be:
     st.markdown("<div class='proposal-text'>Girlfriend?</div>", unsafe_allow_html=True)
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
-        # Ten obrazek "LOVE" jest zakodowany bezpośrednio w tekście (Base64)
-        # Nie potrzebuje internetu, by się wyświetlić.
-        love_b64 = "https://img.icons8.com/bubbles/200/love.png" 
-        st.markdown(f"<div style='text-align:center'><img src='{love_b64}' width='300'></div>", unsafe_allow_html=True)
-
-else:
-    st.write("<br><br>", unsafe_allow_html=True)
-    st.markdown("<h3 style='color: white; text-align: center;'>Choose something from the menu on the left... 👈</h3>", unsafe_allow_html=True)
+        # Kod rysujący serce z napisem LOVE - to nie jest link, to kod. Musi zadziałać.
+        st.markdown("""
+            <div style="text-align: center;">
+                <svg width="300" height="300" viewBox="0 0 24 24" fill="#FF1493" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 1
