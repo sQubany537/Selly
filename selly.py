@@ -50,6 +50,12 @@ st.markdown("""
     .proposal-text {
         font-size: 80px; font-weight: bold; color: #1E90FF;
         text-shadow: 0px 0px 30px #00BFFF; text-align: center; margin-top: 50px;
+        margin-bottom: 0px;
+    }
+
+    .wife-text {
+        font-size: 24px; color: rgba(0, 191, 255, 0.7); text-align: center; 
+        font-style: italic; margin-top: -10px; margin-bottom: 20px;
     }
 
     .quote-text, .tulip-text { color: white; text-align: center; font-size: 22px; font-style: italic; }
@@ -70,7 +76,7 @@ with st.sidebar:
     btn_selly = st.button("Hey Selly")
     btn_love = st.button("I love you")
     btn_sorry = st.button("I want to say sorry :(")
-    btn_song = st.button("Our song") # Nowy przycisk
+    btn_song = st.button("Our song")
     btn_surprise = st.button("Surprise")
     btn_gift = st.button("Random Gift")
     btn_dates = st.button("Special Dates")
@@ -179,6 +185,7 @@ elif btn_dates:
 elif btn_be:
     st.balloons()
     st.markdown("<div class='proposal-text'>Girlfriend?</div>", unsafe_allow_html=True)
+    st.markdown("<div class='wife-text'>and wife later?</div>", unsafe_allow_html=True)
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
         st.markdown("""
