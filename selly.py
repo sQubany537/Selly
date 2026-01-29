@@ -4,7 +4,7 @@ import random
 # 1. Konfiguracja strony
 st.set_page_config(page_title="Hey Selly", layout="wide")
 
-# 2. CSS - Style (Zamiana różu na błękit)
+# 2. CSS - Style
 st.markdown("""
 <style>
     .stApp { background-color: #000000; }
@@ -51,6 +51,12 @@ st.markdown("""
     }
 
     .quote-text, .tulip-text { color: white; text-align: center; font-size: 22px; font-style: italic; }
+    
+    .heart-message {
+        color: white; text-align: center; font-size: 20px; 
+        max-width: 800px; margin: 20px auto; line-height: 1.6; 
+        font-style: italic;
+    }
 
     img { border-radius: 15px; box-shadow: 0px 0px 15px rgba(0, 191, 255, 0.3); }
 </style>
@@ -80,6 +86,17 @@ elif btn_love:
     st.markdown("<h1>I love you so much!</h1>", unsafe_allow_html=True)
     st.markdown("<div class='quote-text'>″ ‘I love you all the way down the lane as far as the river... ”</div>", unsafe_allow_html=True)
     st.markdown("<h1 style='font-size: 80px;'>💙💙💙💙💙</h1>", unsafe_allow_html=True)
+    # TWOJA NOWA WIADOMOŚĆ
+    st.markdown("""
+        <div class='heart-message'>
+            I can't really express in words what you mean to me. To me you are my world; to me you are my everything. 
+            I just want to tell you one thing. I truly love you from my heart and soul. You know what; 
+            in my life you play the most important role. I may not tell you every day that you are my life. 
+            But, today I want to tell you that I love you lots and lots. My dear if I ever get a chance to 
+            choose my next birth, then I would ask God that I wanna be yours again and forever. 
+            I love you so much and I mean it.
+        </div>
+    """, unsafe_allow_html=True)
 
 elif btn_sorry:
     st.snow()
@@ -119,7 +136,6 @@ elif btn_be:
     st.markdown("<div class='proposal-text'>Girlfriend?</div>", unsafe_allow_html=True)
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
-        # Kod rysujący serce z napisem LOVE - teraz w kolorze błękitnym (#00BFFF)
         st.markdown("""
             <div style="text-align: center;">
                 <svg width="300" height="300" viewBox="0 0 24 24" fill="#00BFFF" xmlns="http://www.w3.org/2000/svg">
