@@ -4,14 +4,19 @@ import random
 # 1. Konfiguracja strony
 st.set_page_config(page_title="Hey Selly", layout="wide")
 
-# 2. CSS - Style (Zamiana różu na błękit)
+# Inicjalizacja stanu dla wiadomości pod sercami (żeby nie znikały po kliknięciu)
+if 'love_messages' not in st.session_state:
+    st.session_state.love_messages = [None] * 5
+
+# 2. CSS - Style
 st.markdown("""
 <style>
     .stApp { background-color: #000000; }
     [data-testid="stSidebar"] { background-color: #000000 !important; border-right: 1px solid #333; }
 
+    /* Główne przyciski w menu */
     div.stButton > button {
-        background-color: #00BFFF !important; /* DeepSkyBlue */
+        background-color: #00BFFF !important;
         color: white !important;
         border: none;
         padding: 15px 10px;
@@ -21,11 +26,27 @@ st.markdown("""
         box-shadow: 0px 0px 15px #00BFFF;
         transition: 0.3s;
         display: block;
-        width: 250px; 
+        width: 100%; 
         margin: 10px auto;
     }
 
     div.stButton > button:hover { transform: scale(1.05); box-shadow: 0px 0px 25px #1E90FF; }
+
+    /* Specjalny styl dla przycisków-serduszek (aby nie były wielkimi klocami) */
+    .heart-btn > div > button {
+        background-color: transparent !important;
+        box-shadow: none !important;
+        font-size: 50px !important;
+        width: auto !important;
+        border: none !important;
+        margin: 0 auto !important;
+        display: block !important;
+    }
+    
+    .heart-btn > div > button:hover {
+        transform: scale(1.2);
+        background-color: transparent !important;
+    }
 
     h1, h2, h3 { color: #00BFFF !important; text-align: center; }
     
@@ -50,7 +71,14 @@ st.markdown("""
         text-shadow: 0px 0px 30px #00BFFF; text-align: center; margin-top: 50px;
     }
 
-    .quote-text, .tulip-text { color: white; text-align: center; font-size: 22px; font-style: italic; }
+    .quote-text, .tulip-text { color: white; text-align: center; font-size: 22px; font-style: italic; margin-bottom: 20px; }
+
+    .heart-msg {
+        color: white; text-align: center; font-weight: bold; font-size: 16px;
+        animation: fadeIn 1s;
+    }
+
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
     img { border-radius: 15px; box-shadow: 0px 0px 15px rgba(0, 191, 255, 0.3); }
 </style>
@@ -79,7 +107,27 @@ elif btn_love:
     st.balloons()
     st.markdown("<h1>I love you so much!</h1>", unsafe_allow_html=True)
     st.markdown("<div class='quote-text'>″ ‘I love you all the way down the lane as far as the river... ”</div>", unsafe_allow_html=True)
-    st.markdown("<h1 style='font-size: 80px;'>💙💙💙💙💙</h1>", unsafe_allow_html=True)
+    
+    # Napisy, które pojawią się pod sercami
+    messages = [
+        "My everything 🌍",
+        "My sunshine ☀️",
+        "My soulmate ♾️",
+        "My happiness ✨",
+        "My forever 💙"
+    ]
+    
+    cols = st.columns(5)
+    for i in range(5):
+        with cols[i]:
+            st.markdown('<div class="heart-btn">', unsafe_allow_html=True)
+            if st.button("💙", key=f"h_{i}"):
+                st.session_state.love_messages[i] = messages[i]
+            st.markdown('</div>', unsafe_allow_html=True)
+            
+            # Jeśli wiadomość dla tego indeksu istnieje w sesji, wyświetl ją
+            if st.session_state.love_messages[i]:
+                st.markdown(f"<p class='heart-msg'>{st.session_state.love_messages[i]}</p>", unsafe_allow_html=True)
 
 elif btn_sorry:
     st.snow()
@@ -119,7 +167,6 @@ elif btn_be:
     st.markdown("<div class='proposal-text'>Girlfriend?</div>", unsafe_allow_html=True)
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
-        # Kod rysujący serce z napisem LOVE - teraz w kolorze błękitnym (#00BFFF)
         st.markdown("""
             <div style="text-align: center;">
                 <svg width="300" height="300" viewBox="0 0 24 24" fill="#00BFFF" xmlns="http://www.w3.org/2000/svg">
