@@ -8,49 +8,55 @@ st.set_page_config(page_title="Hey Selly", layout="wide")
 if 'love_messages' not in st.session_state:
     st.session_state.love_messages = [None] * 5
 
-# 2. CSS - Style (Naprawione przyciski boczne)
+# 2. CSS - Style (Totalna naprawa przycisków)
 st.markdown("""
 <style>
     .stApp { background-color: #000000; }
     [data-testid="stSidebar"] { background-color: #000000 !important; border-right: 1px solid #333; }
 
-    /* Główne przyciski w menu bocznym - WYMUSZENIE RÓWNEJ WIELKOŚCI */
-    [data-testid="stSidebar"] div.stButton > button {
+    /* UNIWERSALNA NAPRAWA PRZYCISKÓW W SIDEBARZE */
+    section[data-testid="stSidebar"] .stButton button {
         background-color: #00BFFF !important;
         color: white !important;
-        border: none;
-        padding: 10px 5px !important;
-        font-size: 16px !important;
-        font-weight: bold;
-        border-radius: 50px;
-        box-shadow: 0px 0px 15px #00BFFF;
-        transition: 0.3s;
+        border-radius: 50px !important;
+        box-shadow: 0px 0px 15px #00BFFF !important;
         
-        /* Kluczowe parametry dla równych przycisków */
-        display: block !important;
+        /* WYMUSZENIE ROZMIARU */
         width: 100% !important;
-        min-height: 65px !important; 
-        margin-bottom: 12px !important;
+        height: 60px !important;
+        min-height: 60px !important;
+        max-height: 60px !important;
+        
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        margin: 5px 0px !important;
+        padding: 0px 10px !important;
+        font-size: 16px !important;
+        border: none !important;
+        white-space: normal !important; /* Pozwala na zawijanie tekstu wewnątrz stałej wysokości */
+        word-wrap: break-word !important;
     }
 
-    [data-testid="stSidebar"] div.stButton > button:hover { 
-        transform: scale(1.03); 
-        box-shadow: 0px 0px 25px #1E90FF; 
+    section[data-testid="stSidebar"] .stButton button:hover { 
+        transform: scale(1.02) !important; 
+        box-shadow: 0px 0px 25px #1E90FF !important; 
     }
 
-    /* Styl dla przycisków-serduszek w sekcji I Love You (reset stylu bocznego) */
-    .heart-btn div.stButton > button {
+    /* SPECJALNY RESET DLA SERDUSZEK W SEKCI "I LOVE YOU" */
+    /* Używamy klasy .heart-btn aby wykluczyć te przyciski z powyższych zasad */
+    .heart-btn div[data-testid="stButton"] button {
         background-color: transparent !important;
         box-shadow: none !important;
         font-size: 50px !important;
-        width: auto !important;
+        height: auto !important;
         min-height: auto !important;
+        width: auto !important;
         border: none !important;
-        margin: 0 auto !important;
     }
     
-    .heart-btn div.stButton > button:hover {
-        transform: scale(1.2);
+    .heart-btn div[data-testid="stButton"] button:hover {
+        transform: scale(1.2) !important;
         background-color: transparent !important;
     }
 
