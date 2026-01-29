@@ -113,6 +113,12 @@ elif btn_sorry:
 
 elif btn_song:
     st.markdown("<h1>Mazzy Star - Fade into you 🎶</h1>", unsafe_allow_html=True)
+    
+    # Dodanie odtwarzacza wideo pod tytułem
+    col_v1, col_v2, col_v3 = st.columns([1, 2, 1])
+    with col_v2:
+        st.video("https://www.youtube.com/watch?v=avv2IIdDnnk")
+
     st.markdown("""
         <div class='lyrics-box'>
         <b>[Verse 1]</b>
