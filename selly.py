@@ -8,33 +8,38 @@ st.set_page_config(page_title="Hey Selly", layout="wide")
 if 'love_messages' not in st.session_state:
     st.session_state.love_messages = [None] * 5
 
-# 2. CSS - Style
+# 2. CSS - Style (Naprawione przyciski boczne)
 st.markdown("""
 <style>
     .stApp { background-color: #000000; }
     [data-testid="stSidebar"] { background-color: #000000 !important; border-right: 1px solid #333; }
 
-    /* Główne przyciski w menu - Ujednolicenie wielkości */
-    div.stButton > button {
+    /* Główne przyciski w menu bocznym - WYMUSZENIE RÓWNEJ WIELKOŚCI */
+    [data-testid="stSidebar"] div.stButton > button {
         background-color: #00BFFF !important;
         color: white !important;
         border: none;
-        padding: 10px 5px;
-        font-size: 16px;
+        padding: 10px 5px !important;
+        font-size: 16px !important;
         font-weight: bold;
         border-radius: 50px;
         box-shadow: 0px 0px 15px #00BFFF;
         transition: 0.3s;
-        display: block;
+        
+        /* Kluczowe parametry dla równych przycisków */
+        display: block !important;
         width: 100% !important;
-        min-height: 60px !important;
-        margin: 5px 0px;
+        min-height: 65px !important; 
+        margin-bottom: 12px !important;
     }
 
-    div.stButton > button:hover { transform: scale(1.02); box-shadow: 0px 0px 25px #1E90FF; }
+    [data-testid="stSidebar"] div.stButton > button:hover { 
+        transform: scale(1.03); 
+        box-shadow: 0px 0px 25px #1E90FF; 
+    }
 
-    /* Styl dla przycisków-serduszek w sekcji I Love You */
-    .heart-btn > div > button {
+    /* Styl dla przycisków-serduszek w sekcji I Love You (reset stylu bocznego) */
+    .heart-btn div.stButton > button {
         background-color: transparent !important;
         box-shadow: none !important;
         font-size: 50px !important;
@@ -42,10 +47,9 @@ st.markdown("""
         min-height: auto !important;
         border: none !important;
         margin: 0 auto !important;
-        display: block !important;
     }
     
-    .heart-btn > div > button:hover {
+    .heart-btn div.stButton > button:hover {
         transform: scale(1.2);
         background-color: transparent !important;
     }
@@ -81,7 +85,6 @@ st.markdown("""
     }
 
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
     img { border-radius: 15px; box-shadow: 0px 0px 15px rgba(0, 191, 255, 0.3); }
 </style>
 """, unsafe_allow_html=True)
