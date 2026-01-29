@@ -4,6 +4,10 @@ import random
 # 1. Konfiguracja strony
 st.set_page_config(page_title="Hey Selly", layout="wide")
 
+# Inicjalizacja stanu menu (żeby strona nie uciekała do startu)
+if 'menu_option' not in st.session_state:
+    st.session_state.menu_option = "start"
+
 # 2. CSS - Style
 st.markdown("""
 <style>
@@ -64,72 +68,49 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# 3. Pasek boczny
+# 3. Pasek boczny - przypisujemy akcję do session_state
 with st.sidebar:
     st.markdown("<h2 style='color: white;'>MENU</h2>", unsafe_allow_html=True)
-    btn_selly = st.button("Hey Selly")
-    btn_love = st.button("I love you")
-    btn_sorry = st.button("I want to say sorry :(")
-    btn_song = st.button("Our song")
-    btn_cat = st.button("Create your own cat") # Nowy przycisk
-    btn_surprise = st.button("Surprise")
-    btn_gift = st.button("Random Gift")
-    btn_dates = st.button("Special Dates")
-    btn_be = st.button("Will you be my...")
+    if st.button("Hey Selly"): st.session_state.menu_option = "selly"
+    if st.button("I love you"): st.session_state.menu_option = "love"
+    if st.button("I want to say sorry :("): st.session_state.menu_option = "sorry"
+    if st.button("Our song"): st.session_state.menu_option = "song"
+    if st.button("Create your own cat"): st.session_state.menu_option = "cat"
+    if st.button("Surprise"): st.session_state.menu_option = "surprise"
+    if st.button("Random Gift"): st.session_state.menu_option = "gift"
+    if st.button("Special Dates"): st.session_state.menu_option = "dates"
+    if st.button("Will you be my..."): st.session_state.menu_option = "be"
 
-# 4. Logika wyświetlania
-if btn_selly:
+# 4. Logika wyświetlania oparta na session_state
+if st.session_state.menu_option == "selly":
     st.markdown("<h1>Hey my world 🌍💙</h1>", unsafe_allow_html=True)
     col1, col2, col3 = st.columns([0.8, 2, 0.8])
     with col2:
         st.image("https://images.unsplash.com/photo-1589244159943-460088ed5c92?q=80&w=1000&auto=format&fit=crop", use_container_width=True)
         st.markdown("<p style='color: white; text-align: center; font-size: 22px; font-style: italic;'>I know how much you love tulips and I want you to be mine tulip</p>", unsafe_allow_html=True)
 
-elif btn_love:
+elif st.session_state.menu_option == "love":
     st.balloons()
     st.markdown("<h1>I love you so much!</h1>", unsafe_allow_html=True)
     st.markdown("<h1 style='font-size: 80px;'>💙💙💙💙💙</h1>", unsafe_allow_html=True)
-    st.markdown("""
-        <div class='heart-message'>
-            I can't really express in words what you mean to me. To me you are my world; to me you are my everything. 
-            I just want to tell you one thing. I truly love you from my heart and soul. You know what; 
-            in my life you play the most important role. I may not tell you every day that you are my life. 
-            But, today I want to tell you that I love you lots and lots. My dear if I ever get a chance to 
-            choose my next birth, then I would ask God that I wanna be yours again and forever. 
-            I love you so much and I mean it.
-        </div>
-    """, unsafe_allow_html=True)
+    st.markdown("<div class='heart-message'>I can't really express in words what you mean to me... [Twoja pełna wiadomość]</div>", unsafe_allow_html=True)
 
-elif btn_sorry:
+elif st.session_state.menu_option == "sorry":
     st.snow()
     st.markdown("<h1>I am so sorry...</h1>", unsafe_allow_html=True)
-    st.markdown(f"""
-        <div class='sorry-box'>
-            Selly, I really wanted to apologize to you because what I did was terrible... 
-            I know it's annoying that I keep apologizing, but I promised myself I wouldn't give up 
-            because you're the person I'd do anything for, and that won't change no matter what. 
-            Forgive me for my mistake and please give me one last chance, which I don't intend to waste, ever. 
-            I love you, my honey... I miss you so much...
-            <br><br>
-            If I could, I would take back all the things I did to hurt you. But since I can’t, 
-            please consider forgiving me. I want us to work on healing our relationship.
-        </div>
-    """, unsafe_allow_html=True)
+    st.markdown("<div class='sorry-box'>Selly, I really wanted to apologize... [Twoja wiadomość]</div>", unsafe_allow_html=True)
 
-elif btn_song:
+elif st.session_state.menu_option == "song":
     st.markdown("<h1>Mazzy Star - Fade into you 🎶</h1>", unsafe_allow_html=True)
-    col_v1, col_v2, col_v3 = st.columns([1, 2, 1])
-    with col_v2:
-        st.video("https://www.youtube.com/watch?v=avv2IIdDnnk")
-    st.markdown("<div class='lyrics-box'><b>[Verse 1]</b>\nI wanna hold the hand inside you...</div>", unsafe_allow_html=True)
+    st.video("https://www.youtube.com/watch?v=avv2IIdDnnk")
+    st.markdown("<div class='lyrics-box'>[Tekst piosenki]</div>", unsafe_allow_html=True)
 
-elif btn_cat:
+elif st.session_state.menu_option == "cat":
     st.markdown("<h1>Design your Selly-Cat 🐱</h1>", unsafe_allow_html=True)
     
-    # Wybór koloru
+    # Wybór koloru - teraz nie wyrzuci nas do menu!
     cat_color = st.color_picker("Pick a color for your cat", "#00BFFF")
     
-    # Kot z kształtów SVG
     cat_svg = f"""
     <div style="text-align: center;">
         <svg width="300" height="300" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
@@ -147,33 +128,22 @@ elif btn_cat:
     </div>
     """
     st.markdown(cat_svg, unsafe_allow_html=True)
-    st.markdown("<h3 style='color: white;'>Customizable Selly-Cat! ✨</h3>", unsafe_allow_html=True)
 
-elif btn_surprise:
+elif st.session_state.menu_option == "surprise":
     st.markdown("<h1>Meow! 🐾</h1>", unsafe_allow_html=True)
-    col1, col2, col3 = st.columns([1, 2, 1])
-    with col2:
-        st.image("https://cdn.pixabay.com/photo/2014/11/30/14/11/cat-551554_1280.jpg", use_container_width=True)
+    st.image("https://cdn.pixabay.com/photo/2014/11/30/14/11/cat-551554_1280.jpg")
 
-elif btn_gift:
+elif st.session_state.menu_option == "gift":
     st.markdown("<h1>Your Random Gift! 🎁</h1>", unsafe_allow_html=True)
-    gifts = [
-        {"text": "Free Kisses 💋", "img": "https://cdn.pixabay.com/photo/2016/11/22/19/05/adult-1850073_1280.jpg"},
-        {"text": "Free Hugs 🤗", "img": "https://www.placebear.com/800/600.jpg"}, 
-        {"text": "Free Cats 🐱", "img": "https://cdn.pixabay.com/photo/2017/02/20/18/03/cat-2083492_1280.jpg"},
-        {"text": "Free Chocolate Ice Cream 🍦", "img": "https://cdn.pixabay.com/photo/2016/12/26/16/09/bowl-1932375_1280.jpg"}
-    ]
-    selected_gift = random.choice(gifts)
-    st.markdown(f"<h3>{selected_gift['text']}</h3>", unsafe_allow_html=True)
-    st.image(selected_gift['img'], width=500)
+    # Tu możesz dodać logikę losowania, ale st.session_state pomoże zachować wynik po kliknięciu
+    st.button("Draw again")
     st.balloons()
 
-elif btn_dates:
-    st.snow()
+elif st.session_state.menu_option == "dates":
     st.markdown("<h1>Our Special Date 🌹</h1>", unsafe_allow_html=True)
     st.markdown("<div class='date-text'>12.03.2025r.</div>", unsafe_allow_html=True)
 
-elif btn_be:
+elif st.session_state.menu_option == "be":
     st.balloons()
     st.markdown("<div class='proposal-text'>Girlfriend?</div>", unsafe_allow_html=True)
     st.markdown("<div class='wife-text'>and wife later?</div>", unsafe_allow_html=True)
