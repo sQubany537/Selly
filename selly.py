@@ -109,16 +109,24 @@ elif btn_love:
 elif btn_sorry:
     st.snow()
     st.markdown("<h1>I am so sorry...</h1>", unsafe_allow_html=True)
-    st.markdown(f"<div class='sorry-box'>Selly, I really wanted to apologize to you because what I did was terrible... I know it's annoying that I keep apologizing, but I promised myself I wouldn't give up because you're the person I'd do anything for, and that won't change no matter what. Forgive me for my mistake and please give me one last chance, which I don't intend to waste, ever. I love you, my honey... I miss you so much...</div>", unsafe_allow_html=True)
+    st.markdown(f"""
+        <div class='sorry-box'>
+            Selly, I really wanted to apologize to you because what I did was terrible... 
+            I know it's annoying that I keep apologizing, but I promised myself I wouldn't give up 
+            because you're the person I'd do anything for, and that won't change no matter what. 
+            Forgive me for my mistake and please give me one last chance, which I don't intend to waste, ever. 
+            I love you, my honey... I miss you so much...
+            <br><br>
+            If I could, I would take back all the things I did to hurt you. But since I can’t, 
+            please consider forgiving me. I want us to work on healing our relationship.
+        </div>
+    """, unsafe_allow_html=True)
 
 elif btn_song:
     st.markdown("<h1>Mazzy Star - Fade into you 🎶</h1>", unsafe_allow_html=True)
-    
-    # Dodanie odtwarzacza wideo pod tytułem
     col_v1, col_v2, col_v3 = st.columns([1, 2, 1])
     with col_v2:
         st.video("https://www.youtube.com/watch?v=avv2IIdDnnk")
-
     st.markdown("""
         <div class='lyrics-box'>
         <b>[Verse 1]</b>
