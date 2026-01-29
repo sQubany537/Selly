@@ -4,68 +4,28 @@ import random
 # 1. Konfiguracja strony
 st.set_page_config(page_title="Hey Selly", layout="wide")
 
-# Inicjalizacja stanu dla wiadomości pod sercami
-if 'love_messages' not in st.session_state:
-    st.session_state.love_messages = [None] * 5
-
-# 2. CSS - Style (NAPRAWA SZEROKOŚCI I WYSOKOŚCI)
+# 2. CSS - Style (Zamiana różu na błękit)
 st.markdown("""
 <style>
     .stApp { background-color: #000000; }
     [data-testid="stSidebar"] { background-color: #000000 !important; border-right: 1px solid #333; }
 
-    /* Usuwamy marginesy kontenera w sidebarze, aby przyciski mogły być szerokie */
-    [data-testid="stSidebarNav"] { display: none; }
-    [data-testid="stSidebar"] [data-testid="stVerticalBlock"] {
-        padding-left: 10px !important;
-        padding-right: 10px !important;
-    }
-
-    /* TOTALNA NAPRAWA PRZYCISKÓW W SIDEBARZE */
-    section[data-testid="stSidebar"] .stButton {
-        width: 100% !important;
-    }
-
-    section[data-testid="stSidebar"] .stButton button {
-        background-color: #00BFFF !important;
+    div.stButton > button {
+        background-color: #00BFFF !important; /* DeepSkyBlue */
         color: white !important;
-        border-radius: 50px !important;
-        box-shadow: 0px 0px 15px #00BFFF !important;
-        
-        /* WYMUSZENIE IDENTYCZNYCH WYMIARÓW */
-        width: 100% !important;
-        height: 65px !important;
-        min-height: 65px !important;
-        
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        margin: 0px 0px 10px 0px !important;
-        font-size: 16px !important;
-        font-weight: bold !important;
-        border: none !important;
-        text-align: center !important;
+        border: none;
+        padding: 15px 10px;
+        font-size: 18px;
+        font-weight: bold;
+        border-radius: 50px;
+        box-shadow: 0px 0px 15px #00BFFF;
+        transition: 0.3s;
+        display: block;
+        width: 250px; 
+        margin: 10px auto;
     }
 
-    section[data-testid="stSidebar"] .stButton button:hover { 
-        transform: scale(1.02) !important; 
-        box-shadow: 0px 0px 25px #1E90FF !important; 
-    }
-
-    /* RESET DLA SERDUSZEK (żeby nie były szerokie na całą stronę) */
-    .heart-btn div[data-testid="stButton"] button {
-        background-color: transparent !important;
-        box-shadow: none !important;
-        font-size: 50px !important;
-        height: auto !important;
-        min-height: auto !important;
-        width: auto !important;
-    }
-    
-    .heart-btn div[data-testid="stButton"] button:hover {
-        transform: scale(1.2) !important;
-        background-color: transparent !important;
-    }
+    div.stButton > button:hover { transform: scale(1.05); box-shadow: 0px 0px 25px #1E90FF; }
 
     h1, h2, h3 { color: #00BFFF !important; text-align: center; }
     
@@ -81,7 +41,9 @@ st.markdown("""
         text-shadow: 0px 0px 20px #00BFFF; text-align: center; margin-top: 50px;
     }
 
-    .coming-soon { color: rgba(255, 255, 255, 0.6); text-align: center; font-size: 18px; font-style: italic; }
+    .coming-soon {
+        color: rgba(255, 255, 255, 0.6); text-align: center; font-size: 18px; font-style: italic; margin-top: 10px;
+    }
 
     .proposal-text {
         font-size: 80px; font-weight: bold; color: #1E90FF;
@@ -90,9 +52,6 @@ st.markdown("""
 
     .quote-text, .tulip-text { color: white; text-align: center; font-size: 22px; font-style: italic; }
 
-    .heart-msg { color: white; text-align: center; font-weight: bold; font-size: 14px; animation: fadeIn 1s; }
-
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     img { border-radius: 15px; box-shadow: 0px 0px 15px rgba(0, 191, 255, 0.3); }
 </style>
 """, unsafe_allow_html=True)
@@ -108,33 +67,24 @@ with st.sidebar:
     btn_dates = st.button("Special Dates")
     btn_be = st.button("Will you be my...")
 
-# 4. Logika wyświetlania (pozostała bez zmian)
+# 4. Logika wyświetlania
 if btn_selly:
     st.markdown("<h1>Hey my world 🌍💙</h1>", unsafe_allow_html=True)
     col1, col2, col3 = st.columns([0.8, 2, 0.8])
     with col2:
-        st.image("https://images.unsplash.com/photo-1589244159943-460088ed5c92?q=80&w=1000", use_container_width=True)
+        st.image("https://images.unsplash.com/photo-1589244159943-460088ed5c92?q=80&w=1000&auto=format&fit=crop", use_container_width=True)
         st.markdown("<p class='tulip-text'>I know how much you love tulips and I want you to be mine tulip</p>", unsafe_allow_html=True)
 
 elif btn_love:
     st.balloons()
     st.markdown("<h1>I love you so much!</h1>", unsafe_allow_html=True)
     st.markdown("<div class='quote-text'>″ ‘I love you all the way down the lane as far as the river... ”</div>", unsafe_allow_html=True)
-    messages = ["My everything 🌍", "My sunshine ☀️", "My soulmate ♾️", "My happiness ✨", "My forever 💙"]
-    cols = st.columns(5)
-    for i in range(5):
-        with cols[i]:
-            st.markdown('<div class="heart-btn">', unsafe_allow_html=True)
-            if st.button("💙", key=f"h_{i}"):
-                st.session_state.love_messages[i] = messages[i]
-            st.markdown('</div>', unsafe_allow_html=True)
-            if st.session_state.love_messages[i]:
-                st.markdown(f"<p class='heart-msg'>{st.session_state.love_messages[i]}</p>", unsafe_allow_html=True)
+    st.markdown("<h1 style='font-size: 80px;'>💙💙💙💙💙</h1>", unsafe_allow_html=True)
 
 elif btn_sorry:
     st.snow()
     st.markdown("<h1>I am so sorry...</h1>", unsafe_allow_html=True)
-    st.markdown("<div class='sorry-box'>Selly, I really wanted to apologize to you because what I did was terrible... I know it's annoying that I keep apologizing, but I promised myself I wouldn't give up because you're the person I'd do anything for, and that won't change no matter what. Forgive me for my mistake and please give me one last chance, which I don't intend to waste, ever. I love you, my honey... I miss you so much...</div>", unsafe_allow_html=True)
+    st.markdown(f"<div class='sorry-box'>Selly, I really wanted to apologize to you because what I did was terrible... I know it's annoying that I keep apologizing, but I promised myself I wouldn't give up because you're the person I'd do anything for, and that won't change no matter what. Forgive me for my mistake and please give me one last chance, which I don't intend to waste, ever. I love you, my honey... I miss you so much...</div>", unsafe_allow_html=True)
 
 elif btn_surprise:
     st.markdown("<h1>Meow! 🐾</h1>", unsafe_allow_html=True)
@@ -146,7 +96,7 @@ elif btn_gift:
     st.markdown("<h1>Your Random Gift! 🎁</h1>", unsafe_allow_html=True)
     gifts = [
         {"text": "Free Kisses 💋", "img": "https://cdn.pixabay.com/photo/2016/11/22/19/05/adult-1850073_1280.jpg"},
-        {"text": "Free Hugs 🤗", "img": "https://cdn.pixabay.com/photo/2014/11/30/14/11/cat-551554_1280.jpg"}, 
+        {"text": "Free Hugs 🤗", "img": "https://www.placebear.com/800/600.jpg"}, 
         {"text": "Free Cats 🐱", "img": "https://cdn.pixabay.com/photo/2017/02/20/18/03/cat-2083492_1280.jpg"},
         {"text": "Free Chocolate Ice Cream 🍦", "img": "https://cdn.pixabay.com/photo/2016/12/26/16/09/bowl-1932375_1280.jpg"}
     ]
@@ -161,6 +111,7 @@ elif btn_dates:
     st.snow()
     st.markdown("<h1>Our Special Date 🌹</h1>", unsafe_allow_html=True)
     st.markdown("<div class='date-text'>12.03.2025r.</div>", unsafe_allow_html=True)
+    st.markdown("<p class='coming-soon'>more dates coming soon...</p>", unsafe_allow_html=True)
     st.markdown("<h3 style='color: white; margin-top: 30px;'>Save the date, honey... ✨</h3>", unsafe_allow_html=True)
 
 elif btn_be:
@@ -168,6 +119,7 @@ elif btn_be:
     st.markdown("<div class='proposal-text'>Girlfriend?</div>", unsafe_allow_html=True)
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
+        # Kod rysujący serce z napisem LOVE - teraz w kolorze błękitnym (#00BFFF)
         st.markdown("""
             <div style="text-align: center;">
                 <svg width="300" height="300" viewBox="0 0 24 24" fill="#00BFFF" xmlns="http://www.w3.org/2000/svg">
