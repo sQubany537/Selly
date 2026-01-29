@@ -4,7 +4,7 @@ import random
 # 1. Konfiguracja strony
 st.set_page_config(page_title="Hey Selly", layout="wide")
 
-# Inicjalizacja stanu dla wiadomości pod sercami (żeby nie znikały po kliknięciu)
+# Inicjalizacja stanu dla wiadomości pod sercami
 if 'love_messages' not in st.session_state:
     st.session_state.love_messages = [None] * 5
 
@@ -14,30 +14,32 @@ st.markdown("""
     .stApp { background-color: #000000; }
     [data-testid="stSidebar"] { background-color: #000000 !important; border-right: 1px solid #333; }
 
-    /* Główne przyciski w menu */
+    /* Główne przyciski w menu - Ujednolicenie wielkości */
     div.stButton > button {
         background-color: #00BFFF !important;
         color: white !important;
         border: none;
-        padding: 15px 10px;
-        font-size: 18px;
+        padding: 10px 5px;
+        font-size: 16px;
         font-weight: bold;
         border-radius: 50px;
         box-shadow: 0px 0px 15px #00BFFF;
         transition: 0.3s;
         display: block;
-        width: 100%; 
-        margin: 10px auto;
+        width: 100% !important; /* Szerokość na cały sidebar */
+        min-height: 60px !important; /* Stała wysokość dla każdego przycisku */
+        margin: 5px 0px;
     }
 
-    div.stButton > button:hover { transform: scale(1.05); box-shadow: 0px 0px 25px #1E90FF; }
+    div.stButton > button:hover { transform: scale(1.02); box-shadow: 0px 0px 25px #1E90FF; }
 
-    /* Specjalny styl dla przycisków-serduszek (aby nie były wielkimi klocami) */
+    /* Styl dla przycisków-serduszek w sekcji I Love You */
     .heart-btn > div > button {
         background-color: transparent !important;
         box-shadow: none !important;
         font-size: 50px !important;
         width: auto !important;
+        min-height: auto !important; /* Reset wysokości dla serc */
         border: none !important;
         margin: 0 auto !important;
         display: block !important;
@@ -74,7 +76,7 @@ st.markdown("""
     .quote-text, .tulip-text { color: white; text-align: center; font-size: 22px; font-style: italic; margin-bottom: 20px; }
 
     .heart-msg {
-        color: white; text-align: center; font-weight: bold; font-size: 16px;
+        color: white; text-align: center; font-weight: bold; font-size: 14px;
         animation: fadeIn 1s;
     }
 
@@ -87,6 +89,7 @@ st.markdown("""
 # 3. Pasek boczny
 with st.sidebar:
     st.markdown("<h2 style='color: white;'>MENU</h2>", unsafe_allow_html=True)
+    # Przyciski menu
     btn_selly = st.button("Hey Selly")
     btn_love = st.button("I love you")
     btn_sorry = st.button("I want to say sorry :(")
@@ -108,14 +111,7 @@ elif btn_love:
     st.markdown("<h1>I love you so much!</h1>", unsafe_allow_html=True)
     st.markdown("<div class='quote-text'>″ ‘I love you all the way down the lane as far as the river... ”</div>", unsafe_allow_html=True)
     
-    # Napisy, które pojawią się pod sercami
-    messages = [
-        "My everything 🌍",
-        "My sunshine ☀️",
-        "My soulmate ♾️",
-        "My happiness ✨",
-        "My forever 💙"
-    ]
+    messages = ["My everything 🌍", "My sunshine ☀️", "My soulmate ♾️", "My happiness ✨", "My forever 💙"]
     
     cols = st.columns(5)
     for i in range(5):
@@ -124,8 +120,6 @@ elif btn_love:
             if st.button("💙", key=f"h_{i}"):
                 st.session_state.love_messages[i] = messages[i]
             st.markdown('</div>', unsafe_allow_html=True)
-            
-            # Jeśli wiadomość dla tego indeksu istnieje w sesji, wyświetl ją
             if st.session_state.love_messages[i]:
                 st.markdown(f"<p class='heart-msg'>{st.session_state.love_messages[i]}</p>", unsafe_allow_html=True)
 
@@ -138,44 +132,4 @@ elif btn_surprise:
     st.markdown("<h1>Meow! 🐾</h1>", unsafe_allow_html=True)
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
-        st.image("https://cdn.pixabay.com/photo/2014/11/30/14/11/cat-551554_1280.jpg", use_container_width=True)
-
-elif btn_gift:
-    st.markdown("<h1>Your Random Gift! 🎁</h1>", unsafe_allow_html=True)
-    gifts = [
-        {"text": "Free Kisses 💋", "img": "https://cdn.pixabay.com/photo/2016/11/22/19/05/adult-1850073_1280.jpg"},
-        {"text": "Free Hugs 🤗", "img": "https://www.placebear.com/800/600.jpg"}, 
-        {"text": "Free Cats 🐱", "img": "https://cdn.pixabay.com/photo/2017/02/20/18/03/cat-2083492_1280.jpg"},
-        {"text": "Free Chocolate Ice Cream 🍦", "img": "https://cdn.pixabay.com/photo/2016/12/26/16/09/bowl-1932375_1280.jpg"}
-    ]
-    selected_gift = random.choice(gifts)
-    st.markdown(f"<h3>{selected_gift['text']}</h3>", unsafe_allow_html=True)
-    col1, col2, col3 = st.columns([1, 1.5, 1])
-    with col2:
-        st.image(selected_gift['img'], use_container_width=True)
-    st.balloons()
-
-elif btn_dates:
-    st.snow()
-    st.markdown("<h1>Our Special Date 🌹</h1>", unsafe_allow_html=True)
-    st.markdown("<div class='date-text'>12.03.2025r.</div>", unsafe_allow_html=True)
-    st.markdown("<p class='coming-soon'>more dates coming soon...</p>", unsafe_allow_html=True)
-    st.markdown("<h3 style='color: white; margin-top: 30px;'>Save the date, honey... ✨</h3>", unsafe_allow_html=True)
-
-elif btn_be:
-    st.balloons()
-    st.markdown("<div class='proposal-text'>Girlfriend?</div>", unsafe_allow_html=True)
-    col1, col2, col3 = st.columns([1, 2, 1])
-    with col2:
-        st.markdown("""
-            <div style="text-align: center;">
-                <svg width="300" height="300" viewBox="0 0 24 24" fill="#00BFFF" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-                    <text x="12" y="11" font-family="Arial" font-size="3.5" fill="white" text-anchor="middle" font-weight="bold">LOVE</text>
-                </svg>
-            </div>
-        """, unsafe_allow_html=True)
-
-else:
-    st.write("<br><br>", unsafe_allow_html=True)
-    st.markdown("<h3 style='color: white; text-align: center;'>Choose something from the menu on the left... 👈</h3>", unsafe_allow_html=True)
+        st.image("
