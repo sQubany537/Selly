@@ -8,34 +8,43 @@ st.set_page_config(page_title="Hey Selly", layout="wide")
 if 'love_messages' not in st.session_state:
     st.session_state.love_messages = [None] * 5
 
-# 2. CSS - Style (Totalna naprawa przycisków)
+# 2. CSS - Style (NAPRAWA SZEROKOŚCI I WYSOKOŚCI)
 st.markdown("""
 <style>
     .stApp { background-color: #000000; }
     [data-testid="stSidebar"] { background-color: #000000 !important; border-right: 1px solid #333; }
 
-    /* UNIWERSALNA NAPRAWA PRZYCISKÓW W SIDEBARZE */
+    /* Usuwamy marginesy kontenera w sidebarze, aby przyciski mogły być szerokie */
+    [data-testid="stSidebarNav"] { display: none; }
+    [data-testid="stSidebar"] [data-testid="stVerticalBlock"] {
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+
+    /* TOTALNA NAPRAWA PRZYCISKÓW W SIDEBARZE */
+    section[data-testid="stSidebar"] .stButton {
+        width: 100% !important;
+    }
+
     section[data-testid="stSidebar"] .stButton button {
         background-color: #00BFFF !important;
         color: white !important;
         border-radius: 50px !important;
         box-shadow: 0px 0px 15px #00BFFF !important;
         
-        /* WYMUSZENIE ROZMIARU */
+        /* WYMUSZENIE IDENTYCZNYCH WYMIARÓW */
         width: 100% !important;
-        height: 60px !important;
-        min-height: 60px !important;
-        max-height: 60px !important;
+        height: 65px !important;
+        min-height: 65px !important;
         
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
-        margin: 5px 0px !important;
-        padding: 0px 10px !important;
+        margin: 0px 0px 10px 0px !important;
         font-size: 16px !important;
+        font-weight: bold !important;
         border: none !important;
-        white-space: normal !important; /* Pozwala na zawijanie tekstu wewnątrz stałej wysokości */
-        word-wrap: break-word !important;
+        text-align: center !important;
     }
 
     section[data-testid="stSidebar"] .stButton button:hover { 
@@ -43,8 +52,7 @@ st.markdown("""
         box-shadow: 0px 0px 25px #1E90FF !important; 
     }
 
-    /* SPECJALNY RESET DLA SERDUSZEK W SEKCI "I LOVE YOU" */
-    /* Używamy klasy .heart-btn aby wykluczyć te przyciski z powyższych zasad */
+    /* RESET DLA SERDUSZEK (żeby nie były szerokie na całą stronę) */
     .heart-btn div[data-testid="stButton"] button {
         background-color: transparent !important;
         box-shadow: none !important;
@@ -52,7 +60,6 @@ st.markdown("""
         height: auto !important;
         min-height: auto !important;
         width: auto !important;
-        border: none !important;
     }
     
     .heart-btn div[data-testid="stButton"] button:hover {
@@ -74,21 +81,16 @@ st.markdown("""
         text-shadow: 0px 0px 20px #00BFFF; text-align: center; margin-top: 50px;
     }
 
-    .coming-soon {
-        color: rgba(255, 255, 255, 0.6); text-align: center; font-size: 18px; font-style: italic; margin-top: 10px;
-    }
+    .coming-soon { color: rgba(255, 255, 255, 0.6); text-align: center; font-size: 18px; font-style: italic; }
 
     .proposal-text {
         font-size: 80px; font-weight: bold; color: #1E90FF;
         text-shadow: 0px 0px 30px #00BFFF; text-align: center; margin-top: 50px;
     }
 
-    .quote-text, .tulip-text { color: white; text-align: center; font-size: 22px; font-style: italic; margin-bottom: 20px; }
+    .quote-text, .tulip-text { color: white; text-align: center; font-size: 22px; font-style: italic; }
 
-    .heart-msg {
-        color: white; text-align: center; font-weight: bold; font-size: 14px;
-        animation: fadeIn 1s;
-    }
+    .heart-msg { color: white; text-align: center; font-weight: bold; font-size: 14px; animation: fadeIn 1s; }
 
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     img { border-radius: 15px; box-shadow: 0px 0px 15px rgba(0, 191, 255, 0.3); }
@@ -106,7 +108,7 @@ with st.sidebar:
     btn_dates = st.button("Special Dates")
     btn_be = st.button("Will you be my...")
 
-# 4. Logika wyświetlania
+# 4. Logika wyświetlania (pozostała bez zmian)
 if btn_selly:
     st.markdown("<h1>Hey my world 🌍💙</h1>", unsafe_allow_html=True)
     col1, col2, col3 = st.columns([0.8, 2, 0.8])
@@ -118,9 +120,7 @@ elif btn_love:
     st.balloons()
     st.markdown("<h1>I love you so much!</h1>", unsafe_allow_html=True)
     st.markdown("<div class='quote-text'>″ ‘I love you all the way down the lane as far as the river... ”</div>", unsafe_allow_html=True)
-    
     messages = ["My everything 🌍", "My sunshine ☀️", "My soulmate ♾️", "My happiness ✨", "My forever 💙"]
-    
     cols = st.columns(5)
     for i in range(5):
         with cols[i]:
@@ -161,7 +161,6 @@ elif btn_dates:
     st.snow()
     st.markdown("<h1>Our Special Date 🌹</h1>", unsafe_allow_html=True)
     st.markdown("<div class='date-text'>12.03.2025r.</div>", unsafe_allow_html=True)
-    st.markdown("<p class='coming-soon'>more dates coming soon...</p>", unsafe_allow_html=True)
     st.markdown("<h3 style='color: white; margin-top: 30px;'>Save the date, honey... ✨</h3>", unsafe_allow_html=True)
 
 elif btn_be:
