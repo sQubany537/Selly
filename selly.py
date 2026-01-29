@@ -29,12 +29,14 @@ st.markdown("""
 
     h1, h2, h3 { color: #00BFFF !important; text-align: center; }
     
-    .sorry-box {
-        color: white; text-align: center; font-size: 20px; line-height: 1.8;
-        max-width: 700px; margin: 40px auto; padding: 30px;
+    .sorry-box, .lyrics-box {
+        color: white; text-align: center; font-size: 18px; line-height: 1.6;
+        max-width: 700px; margin: 20px auto; padding: 30px;
         border: 1px solid rgba(0, 191, 255, 0.3); border-radius: 20px;
-        background-color: rgba(255, 255, 255, 0.05); font-style: italic;
+        background-color: rgba(255, 255, 255, 0.05);
     }
+    
+    .lyrics-box { font-style: normal; white-space: pre-line; }
 
     .date-text {
         font-size: 60px; font-weight: bold; color: #FFFFFF;
@@ -68,6 +70,7 @@ with st.sidebar:
     btn_selly = st.button("Hey Selly")
     btn_love = st.button("I love you")
     btn_sorry = st.button("I want to say sorry :(")
+    btn_song = st.button("Our song") # Nowy przycisk
     btn_surprise = st.button("Surprise")
     btn_gift = st.button("Random Gift")
     btn_dates = st.button("Special Dates")
@@ -86,7 +89,6 @@ elif btn_love:
     st.markdown("<h1>I love you so much!</h1>", unsafe_allow_html=True)
     st.markdown("<div class='quote-text'>″ ‘I love you all the way down the lane as far as the river... ”</div>", unsafe_allow_html=True)
     st.markdown("<h1 style='font-size: 80px;'>💙💙💙💙💙</h1>", unsafe_allow_html=True)
-    # TWOJA NOWA WIADOMOŚĆ
     st.markdown("""
         <div class='heart-message'>
             I can't really express in words what you mean to me. To me you are my world; to me you are my everything. 
@@ -102,6 +104,49 @@ elif btn_sorry:
     st.snow()
     st.markdown("<h1>I am so sorry...</h1>", unsafe_allow_html=True)
     st.markdown(f"<div class='sorry-box'>Selly, I really wanted to apologize to you because what I did was terrible... I know it's annoying that I keep apologizing, but I promised myself I wouldn't give up because you're the person I'd do anything for, and that won't change no matter what. Forgive me for my mistake and please give me one last chance, which I don't intend to waste, ever. I love you, my honey... I miss you so much...</div>", unsafe_allow_html=True)
+
+elif btn_song:
+    st.markdown("<h1>Mazzy Star - Fade into you 🎶</h1>", unsafe_allow_html=True)
+    st.markdown("""
+        <div class='lyrics-box'>
+        <b>[Verse 1]</b>
+        I wanna hold the hand inside you
+        I wanna take the breath that's true
+        I look to you and I see nothing
+        I look to you to see the truth
+        You live your life, you go in shadows
+        You'll come apart and you'll go blind
+        Some kind of night into your darkness
+        Colors your eyes with what's not there
+
+        <b>[Chorus]</b>
+        Fade into you
+        Strange you never knew
+        Fade into you
+        I think it's strange you never knew
+
+        <b>[Guitar Solo]</b>
+
+        <b>[Verse 2]</b>
+        A stranger light comes on slowly
+        A stranger's heart without a home
+        You put your hands into your head
+        And then its smiles cover your heart
+
+        <b>[Chorus]</b>
+        Fade into you
+        Strange you never knew
+        Fade into you
+        I think it's strange you never knew
+        Fade into you
+        Strange you never knew
+        Fade into you
+        I think it's strange you never knew
+
+        <b>[Outro]</b>
+        I think it's strange you never knew
+        </div>
+    """, unsafe_allow_html=True)
 
 elif btn_surprise:
     st.markdown("<h1>Meow! 🐾</h1>", unsafe_allow_html=True)
