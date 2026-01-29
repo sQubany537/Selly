@@ -26,8 +26,8 @@ st.markdown("""
         box-shadow: 0px 0px 15px #00BFFF;
         transition: 0.3s;
         display: block;
-        width: 100% !important; /* Szerokość na cały sidebar */
-        min-height: 60px !important; /* Stała wysokość dla każdego przycisku */
+        width: 100% !important;
+        min-height: 60px !important;
         margin: 5px 0px;
     }
 
@@ -39,7 +39,7 @@ st.markdown("""
         box-shadow: none !important;
         font-size: 50px !important;
         width: auto !important;
-        min-height: auto !important; /* Reset wysokości dla serc */
+        min-height: auto !important;
         border: none !important;
         margin: 0 auto !important;
         display: block !important;
@@ -89,7 +89,6 @@ st.markdown("""
 # 3. Pasek boczny
 with st.sidebar:
     st.markdown("<h2 style='color: white;'>MENU</h2>", unsafe_allow_html=True)
-    # Przyciski menu
     btn_selly = st.button("Hey Selly")
     btn_love = st.button("I love you")
     btn_sorry = st.button("I want to say sorry :(")
@@ -103,7 +102,7 @@ if btn_selly:
     st.markdown("<h1>Hey my world 🌍💙</h1>", unsafe_allow_html=True)
     col1, col2, col3 = st.columns([0.8, 2, 0.8])
     with col2:
-        st.image("https://images.unsplash.com/photo-1589244159943-460088ed5c92?q=80&w=1000&auto=format&fit=crop", use_container_width=True)
+        st.image("https://images.unsplash.com/photo-1589244159943-460088ed5c92?q=80&w=1000", use_container_width=True)
         st.markdown("<p class='tulip-text'>I know how much you love tulips and I want you to be mine tulip</p>", unsafe_allow_html=True)
 
 elif btn_love:
@@ -126,10 +125,50 @@ elif btn_love:
 elif btn_sorry:
     st.snow()
     st.markdown("<h1>I am so sorry...</h1>", unsafe_allow_html=True)
-    st.markdown(f"<div class='sorry-box'>Selly, I really wanted to apologize to you because what I did was terrible... I know it's annoying that I keep apologizing, but I promised myself I wouldn't give up because you're the person I'd do anything for, and that won't change no matter what. Forgive me for my mistake and please give me one last chance, which I don't intend to waste, ever. I love you, my honey... I miss you so much...</div>", unsafe_allow_html=True)
+    st.markdown("<div class='sorry-box'>Selly, I really wanted to apologize to you because what I did was terrible... I know it's annoying that I keep apologizing, but I promised myself I wouldn't give up because you're the person I'd do anything for, and that won't change no matter what. Forgive me for my mistake and please give me one last chance, which I don't intend to waste, ever. I love you, my honey... I miss you so much...</div>", unsafe_allow_html=True)
 
 elif btn_surprise:
     st.markdown("<h1>Meow! 🐾</h1>", unsafe_allow_html=True)
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
-        st.image("
+        st.image("https://cdn.pixabay.com/photo/2014/11/30/14/11/cat-551554_1280.jpg", use_container_width=True)
+
+elif btn_gift:
+    st.markdown("<h1>Your Random Gift! 🎁</h1>", unsafe_allow_html=True)
+    gifts = [
+        {"text": "Free Kisses 💋", "img": "https://cdn.pixabay.com/photo/2016/11/22/19/05/adult-1850073_1280.jpg"},
+        {"text": "Free Hugs 🤗", "img": "https://cdn.pixabay.com/photo/2014/11/30/14/11/cat-551554_1280.jpg"}, 
+        {"text": "Free Cats 🐱", "img": "https://cdn.pixabay.com/photo/2017/02/20/18/03/cat-2083492_1280.jpg"},
+        {"text": "Free Chocolate Ice Cream 🍦", "img": "https://cdn.pixabay.com/photo/2016/12/26/16/09/bowl-1932375_1280.jpg"}
+    ]
+    selected_gift = random.choice(gifts)
+    st.markdown(f"<h3>{selected_gift['text']}</h3>", unsafe_allow_html=True)
+    col1, col2, col3 = st.columns([1, 1.5, 1])
+    with col2:
+        st.image(selected_gift['img'], use_container_width=True)
+    st.balloons()
+
+elif btn_dates:
+    st.snow()
+    st.markdown("<h1>Our Special Date 🌹</h1>", unsafe_allow_html=True)
+    st.markdown("<div class='date-text'>12.03.2025r.</div>", unsafe_allow_html=True)
+    st.markdown("<p class='coming-soon'>more dates coming soon...</p>", unsafe_allow_html=True)
+    st.markdown("<h3 style='color: white; margin-top: 30px;'>Save the date, honey... ✨</h3>", unsafe_allow_html=True)
+
+elif btn_be:
+    st.balloons()
+    st.markdown("<div class='proposal-text'>Girlfriend?</div>", unsafe_allow_html=True)
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        st.markdown("""
+            <div style="text-align: center;">
+                <svg width="300" height="300" viewBox="0 0 24 24" fill="#00BFFF" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                    <text x="12" y="11" font-family="Arial" font-size="3.5" fill="white" text-anchor="middle" font-weight="bold">LOVE</text>
+                </svg>
+            </div>
+        """, unsafe_allow_html=True)
+
+else:
+    st.write("<br><br>", unsafe_allow_html=True)
+    st.markdown("<h3 style='color: white; text-align: center;'>Choose something from the menu on the left... 👈</h3>", unsafe_allow_html=True)
