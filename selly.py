@@ -4,7 +4,7 @@ import random
 # 1. Konfiguracja strony
 st.set_page_config(page_title="Hey Selly", layout="wide")
 
-# Inicjalizacja stanu menu
+# Inicjalizacja stanu menu (żeby strona nie uciekała do startu)
 if 'menu_option' not in st.session_state:
     st.session_state.menu_option = "start"
 
@@ -68,7 +68,7 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# 3. Pasek boczny
+# 3. Pasek boczny - przypisujemy akcję do session_state
 with st.sidebar:
     st.markdown("<h2 style='color: white;'>MENU</h2>", unsafe_allow_html=True)
     if st.button("Hey Selly"): st.session_state.menu_option = "selly"
@@ -81,7 +81,7 @@ with st.sidebar:
     if st.button("Special Dates"): st.session_state.menu_option = "dates"
     if st.button("Will you be my..."): st.session_state.menu_option = "be"
 
-# 4. Logika wyświetlania
+# 4. Logika wyświetlania oparta na session_state
 if st.session_state.menu_option == "selly":
     st.markdown("<h1>Hey my world 🌍💙</h1>", unsafe_allow_html=True)
     col1, col2, col3 = st.columns([0.8, 2, 0.8])
@@ -93,59 +93,41 @@ elif st.session_state.menu_option == "love":
     st.balloons()
     st.markdown("<h1>I love you so much!</h1>", unsafe_allow_html=True)
     st.markdown("<h1 style='font-size: 80px;'>💙💙💙💙💙</h1>", unsafe_allow_html=True)
-    st.markdown("""<div class='heart-message'>I can't really express in words what you mean to me... I truly love you from my heart and soul. In my life you play the most important role. I love you so much and I mean it.</div>""", unsafe_allow_html=True)
+    st.markdown("<div class='heart-message'>I can't really express in words what you mean to me... [Twoja pełna wiadomość]</div>", unsafe_allow_html=True)
 
 elif st.session_state.menu_option == "sorry":
     st.snow()
     st.markdown("<h1>I am so sorry...</h1>", unsafe_allow_html=True)
-    st.markdown(f"<div class='sorry-box'>Selly, I really wanted to apologize... If I could, I would take back all the things I did to hurt you. But since I can’t, please consider forgiving me. I want us to work on healing our relationship.</div>", unsafe_allow_html=True)
+    st.markdown("<div class='sorry-box'>Selly, I really wanted to apologize... [Twoja wiadomość]</div>", unsafe_allow_html=True)
 
 elif st.session_state.menu_option == "song":
     st.markdown("<h1>Mazzy Star - Fade into you 🎶</h1>", unsafe_allow_html=True)
-    col_v1, col_v2, col_v3 = st.columns([1, 2, 1])
-    with col_v2:
-        st.video("https://www.youtube.com/watch?v=avv2IIdDnnk")
-    st.markdown("<div class='lyrics-box'>I wanna hold the hand inside you...</div>", unsafe_allow_html=True)
+    st.video("https://www.youtube.com/watch?v=avv2IIdDnnk")
+    st.markdown("<div class='lyrics-box'>[Tekst piosenki]</div>", unsafe_allow_html=True)
 
 elif st.session_state.menu_option == "cat":
     st.markdown("<h1>Design your Selly-Cat 🐱</h1>", unsafe_allow_html=True)
     
-    col_c1, col_c2 = st.columns([1, 2])
-    with col_c1:
-        cat_color = st.color_picker("Body Color", "#00BFFF")
-        show_stripes = st.checkbox("Add Stripes?", value=True)
-        stripe_color = st.color_picker("Stripe Color", "#FFFFFF") if show_stripes else "#000000"
-
-    with col_c2:
-        # SVG z naprawioną kolejnością warstw
-        stripes_html = ""
-        if show_stripes:
-            stripes_html = f"""
-                <rect x="85" y="45" width="30" height="4" fill="{stripe_color}" />
-                <rect x="85" y="55" width="30" height="4" fill="{stripe_color}" />
-                <rect x="70" y="140" width="60" height="6" fill="{stripe_color}" />
-                <rect x="65" y="155" width="70" height="6" fill="{stripe_color}" />
-            """
-
-        cat_svg = f"""
-        <div style="text-align: center;">
-            <svg width="350" height="350" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                <polygon points="50,60 70,20 90,50" fill="{cat_color}" />
-                <polygon points="150,60 130,20 110,50" fill="{cat_color}" />
-                <ellipse cx="100" cy="150" rx="60" ry="45" fill="{cat_color}" />
-                <circle cx="100" cy="80" r="50" fill="{cat_color}" />
-                <path d="M160,150 Q190,120 170,80" stroke="{cat_color}" stroke-width="12" fill="none" stroke-linecap="round" />
-                {stripes_html}
-                <circle cx="80" cy="75" r="7" fill="white" />
-                <circle cx="120" cy="75" r="7" fill="white" />
-                <circle cx="80" cy="75" r="3" fill="black" />
-                <circle cx="120" cy="75" r="3" fill="black" />
-                <polygon points="100,90 94,100 106,100" fill="pink" />
-                <path d="M90,110 Q100,120 110,110" stroke="black" stroke-width="2" fill="none" />
-            </svg>
-        </div>
-        """
-        st.markdown(cat_svg, unsafe_allow_html=True)
+    # Wybór koloru - teraz nie wyrzuci nas do menu!
+    cat_color = st.color_picker("Pick a color for your cat", "#00BFFF")
+    
+    cat_svg = f"""
+    <div style="text-align: center;">
+        <svg width="300" height="300" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="50,60 70,20 90,50" fill="{cat_color}" />
+            <polygon points="150,60 130,20 110,50" fill="{cat_color}" />
+            <circle cx="100" cy="80" r="50" fill="{cat_color}" />
+            <circle cx="80" cy="70" r="8" fill="white" />
+            <circle cx="120" cy="70" r="8" fill="white" />
+            <circle cx="80" cy="70" r="4" fill="black" />
+            <circle cx="120" cy="70" r="4" fill="black" />
+            <polygon points="100,85 95,95 105,95" fill="pink" />
+            <ellipse cx="100" cy="150" rx="60" ry="40" fill="{cat_color}" />
+            <path d="M160,150 Q190,120 170,80" stroke="{cat_color}" stroke-width="10" fill="none" stroke-linecap="round" />
+        </svg>
+    </div>
+    """
+    st.markdown(cat_svg, unsafe_allow_html=True)
 
 elif st.session_state.menu_option == "surprise":
     st.markdown("<h1>Meow! 🐾</h1>", unsafe_allow_html=True)
@@ -153,7 +135,8 @@ elif st.session_state.menu_option == "surprise":
 
 elif st.session_state.menu_option == "gift":
     st.markdown("<h1>Your Random Gift! 🎁</h1>", unsafe_allow_html=True)
-    st.image("https://cdn.pixabay.com/photo/2016/11/22/19/05/adult-1850073_1280.jpg", width=500)
+    # Tu możesz dodać logikę losowania, ale st.session_state pomoże zachować wynik po kliknięciu
+    st.button("Draw again")
     st.balloons()
 
 elif st.session_state.menu_option == "dates":
