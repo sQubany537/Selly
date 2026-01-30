@@ -93,17 +93,12 @@ elif st.session_state.menu_option == "love":
     st.balloons()
     st.markdown("<h1>I love you so much!</h1>", unsafe_allow_html=True)
     st.markdown("<h1 style='font-size: 80px;'>💙💙💙💙💙</h1>", unsafe_allow_html=True)
-    st.markdown(f"<div class='heart-message'>I can't really express in words what you mean to me... I truly love you from my heart and soul. In my life you play the most important role. I love you so much and I mean it.</div>", unsafe_allow_html=True)
+    st.markdown("""<div class='heart-message'>I can't really express in words what you mean to me... I truly love you from my heart and soul. In my life you play the most important role. I love you so much and I mean it.</div>""", unsafe_allow_html=True)
 
 elif st.session_state.menu_option == "sorry":
     st.snow()
     st.markdown("<h1>I am so sorry...</h1>", unsafe_allow_html=True)
-    st.markdown(f"""
-        <div class='sorry-box'>
-            Selly, I really wanted to apologize... If I could, I would take back all the things I did to hurt you. 
-            But since I can’t, please consider forgiving me. I want us to work on healing our relationship.
-        </div>
-    """, unsafe_allow_html=True)
+    st.markdown(f"<div class='sorry-box'>Selly, I really wanted to apologize... If I could, I would take back all the things I did to hurt you. But since I can’t, please consider forgiving me. I want us to work on healing our relationship.</div>", unsafe_allow_html=True)
 
 elif st.session_state.menu_option == "song":
     st.markdown("<h1>Mazzy Star - Fade into you 🎶</h1>", unsafe_allow_html=True)
@@ -115,41 +110,42 @@ elif st.session_state.menu_option == "song":
 elif st.session_state.menu_option == "cat":
     st.markdown("<h1>Design your Selly-Cat 🐱</h1>", unsafe_allow_html=True)
     
-    col_c1, col_c2 = st.columns([1, 1])
+    col_c1, col_c2 = st.columns([1, 2])
     with col_c1:
         cat_color = st.color_picker("Body Color", "#00BFFF")
-        show_stripes = st.checkbox("Add Stripes?")
+        show_stripes = st.checkbox("Add Stripes?", value=True)
         stripe_color = st.color_picker("Stripe Color", "#FFFFFF") if show_stripes else "#000000"
 
-    # SVG Kota z paskami
-    stripes_html = ""
-    if show_stripes:
-        stripes_html = f"""
-            <rect x="80" y="135" width="40" height="5" fill="{stripe_color}" />
-            <rect x="75" y="145" width="50" height="5" fill="{stripe_color}" />
-            <rect x="80" y="155" width="40" height="5" fill="{stripe_color}" />
-            <rect x="90" y="50" width="20" height="3" fill="{stripe_color}" />
-            <rect x="90" y="58" width="20" height="3" fill="{stripe_color}" />
-        """
+    with col_c2:
+        # SVG z naprawioną kolejnością warstw
+        stripes_html = ""
+        if show_stripes:
+            stripes_html = f"""
+                <rect x="85" y="45" width="30" height="4" fill="{stripe_color}" />
+                <rect x="85" y="55" width="30" height="4" fill="{stripe_color}" />
+                <rect x="70" y="140" width="60" height="6" fill="{stripe_color}" />
+                <rect x="65" y="155" width="70" height="6" fill="{stripe_color}" />
+            """
 
-    cat_svg = f"""
-    <div style="text-align: center;">
-        <svg width="300" height="300" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-            <polygon points="50,60 70,20 90,50" fill="{cat_color}" />
-            <polygon points="150,60 130,20 110,50" fill="{cat_color}" />
-            <circle cx="100" cy="80" r="50" fill="{cat_color}" />
-            {stripes_html if show_stripes else ""}
-            <circle cx="80" cy="70" r="8" fill="white" />
-            <circle cx="120" cy="70" r="8" fill="white" />
-            <circle cx="80" cy="70" r="4" fill="black" />
-            <circle cx="120" cy="70" r="4" fill="black" />
-            <polygon points="100,85 95,95 105,95" fill="pink" />
-            <ellipse cx="100" cy="150" rx="60" ry="40" fill="{cat_color}" />
-            <path d="M160,150 Q190,120 170,80" stroke="{cat_color}" stroke-width="10" fill="none" stroke-linecap="round" />
-        </svg>
-    </div>
-    """
-    st.markdown(cat_svg, unsafe_allow_html=True)
+        cat_svg = f"""
+        <div style="text-align: center;">
+            <svg width="350" height="350" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <polygon points="50,60 70,20 90,50" fill="{cat_color}" />
+                <polygon points="150,60 130,20 110,50" fill="{cat_color}" />
+                <ellipse cx="100" cy="150" rx="60" ry="45" fill="{cat_color}" />
+                <circle cx="100" cy="80" r="50" fill="{cat_color}" />
+                <path d="M160,150 Q190,120 170,80" stroke="{cat_color}" stroke-width="12" fill="none" stroke-linecap="round" />
+                {stripes_html}
+                <circle cx="80" cy="75" r="7" fill="white" />
+                <circle cx="120" cy="75" r="7" fill="white" />
+                <circle cx="80" cy="75" r="3" fill="black" />
+                <circle cx="120" cy="75" r="3" fill="black" />
+                <polygon points="100,90 94,100 106,100" fill="pink" />
+                <path d="M90,110 Q100,120 110,110" stroke="black" stroke-width="2" fill="none" />
+            </svg>
+        </div>
+        """
+        st.markdown(cat_svg, unsafe_allow_html=True)
 
 elif st.session_state.menu_option == "surprise":
     st.markdown("<h1>Meow! 🐾</h1>", unsafe_allow_html=True)
